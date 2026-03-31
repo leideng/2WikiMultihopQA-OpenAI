@@ -2,15 +2,16 @@ import json
 import collections
 import string
 import re
+import asyncio
 from rouge_score import rouge_scorer
 import numpy as np
 
 
-from openai import OpenAI
+from openai import AsyncOpenAI
 import os
 
 #global client
-client = OpenAI(
+aclient = AsyncOpenAI(
 	api_key=os.getenv("OPENAI_API_KEY"),
 	base_url=os.getenv("OPENAI_BASE_URL")
 )
@@ -18,6 +19,8 @@ client = OpenAI(
 
 #global model name
 MODEL_NAME = "kimi-k2.5"
+TOKEN_PARAM = os.getenv("TOKEN_PARAM", "max_completion_tokens")  # use "max_tokens" for many vLLM servers
+DISABLE_THINKING = os.getenv("DISABLE_THINKING", "1") == "1"
 
 #global eval dataset path
 eval_dataset_path = "data/2wikimqa_200_samples_from_blend.json"
@@ -99,26 +102,42 @@ def compute_rl(pred, gold):
 
 
 
-def get_response(prompt):
-    completion = client.chat.completions.create(
-        model=MODEL_NAME,  
-        messages=[{'role': 'system', 'content': 'You are a helpful assistant.'},
-                  {'role': 'user', 'content': prompt}],
-        max_completion_tokens=20,  # newer parameter (recommended), old version is max_tokens, it inclues both reasoning and answer tokens
-        #extra_body= {'chat_template_kwargs': {"thinking": False}}, #for vllm/sglang
-        extra_body={'thinking': {'type': 'disabled'}}
-    )
+async def get_response_async(prompt):
+    request_kwargs = {
+        "model": MODEL_NAME,
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt},
+        ],
+        TOKEN_PARAM: 20,
+    }
+    if DISABLE_THINKING:
+        request_kwargs["extra_body"] = {"thinking": {"type": "disabled"}}
+
+    completion = await aclient.chat.completions.create(**request_kwargs)
 
     print("="*50+"completion as json"+"="*50)
     print(completion.model_dump_json())
 
-    print("="*55+"response"+"="*55) 
+    print("="*55+"response"+"="*55)
     print(completion.choices[0].message.content)
 
     return completion.choices[0].message.content
 
 
-def main():
+async def get_responses_batched_async(prompts, max_concurrency=4):
+    semaphore = asyncio.Semaphore(max_concurrency)
+    responses = [None] * len(prompts)
+
+    async def _run_one(idx, prompt):
+        async with semaphore:
+            responses[idx] = await get_response_async(prompt)
+
+    await asyncio.gather(*[_run_one(idx, prompt) for idx, prompt in enumerate(prompts)])
+    return responses
+
+
+async def main():
     try:
         with open(eval_dataset_path) as f:
             eval_dataset = json.load(f)
@@ -139,54 +158,69 @@ def main():
     rl_list =[]
     #max_ctx_len = 4096-196
 
-    BS = 1
-    for idx, ex in enumerate(eval_dataset):
-        if idx >= BS:
-            break
+    MAX_SAMPLES = int(os.getenv("MAX_SAMPLES", "1"))
+    REQUEST_BATCH_SIZE = int(os.getenv("REQUEST_BATCH_SIZE", "4"))
 
-        print(f"Processing sample {idx+1} of {len(eval_dataset)}")
+    selected_samples = eval_dataset[:MAX_SAMPLES]
+    for batch_start in range(0, len(selected_samples), REQUEST_BATCH_SIZE):
+        batch = selected_samples[batch_start : batch_start + REQUEST_BATCH_SIZE]
 
-        question = ex["question"]
-        question = normalize_question(question)
-        answers = ex["answers"][0][0]
+        prompts = []
+        questions = []
+        answers_list = []
+        sample_indices = []
 
-        ctxs = ex["ctxs"]
-        print(f"Question: {question}")
-        print(f"Answers: {answers}")
+        for i, ex in enumerate(batch):
+            idx = batch_start + i
+            print(f"Processing sample {idx+1} of {len(selected_samples)}")
 
-        context=""
-        for ctx in ctxs:
-            context += f"{ctx['title']}\n\n{ctx['text']}\n\n"
-        
-        print(f"Context: {len(ctxs)} chunks with total {len(context)} characters")
+            question = normalize_question(ex["question"])
+            answers = ex["answers"][0][0]
+            ctxs = ex["ctxs"]
 
-        #we use longbench's prompt template for 2WikiMQA
-        prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\nQuestion: {question} Answer:"
+            print(f"Question: {question}")
+            print(f"Answers: {answers}")
 
-        print(f"Prompt(short): {prompt[:500]}\n......\n{prompt[-500:]}")
+            context = ""
+            for ctx in ctxs:
+                context += f"{ctx['title']}\n\n{ctx['text']}\n\n"
 
-        response = get_response(prompt)
+            print(f"Context: {len(ctxs)} chunks with total {len(context)} characters")
 
-        #for debugging
-        #response = "It is Ozalj"
-        
-        print(f"Response: {response}")
-        
+            #we use longbench's prompt template for 2WikiMQA
+            prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\nQuestion: {question} Answer:"
+            print(f"Prompt(short): {prompt[:500]}\n......\n{prompt[-500:]}")
 
-        f1, precision, recall = compute_f1(response, answers)
-        print(f"F1: {f1}, Precision: {precision}, Recall: {recall}")
-        f1_list.append(f1)
+            prompts.append(prompt)
+            questions.append(question)
+            answers_list.append(answers)
+            sample_indices.append(idx + 1)
 
-        rl = compute_rl(response, answers)
-        print(f"RL: {rl}")
-        rl_list.append(rl)
+        responses = await get_responses_batched_async(
+            prompts, max_concurrency=REQUEST_BATCH_SIZE
+        )
 
-        with open(save_results_path, "a") as f:
-            f.write(f"{idx+1},{question},{answers},{response},{f1},{precision},{recall},{rl}\n")
+        for i, response in enumerate(responses):
+            question = questions[i]
+            answers = answers_list[i]
+            sample_idx = sample_indices[i]
+
+            print(f"Response: {response}")
+
+            f1, precision, recall = compute_f1(response, answers)
+            print(f"F1: {f1}, Precision: {precision}, Recall: {recall}")
+            f1_list.append(f1)
+
+            rl = compute_rl(response, answers)
+            print(f"RL: {rl}")
+            rl_list.append(rl)
+
+            with open(save_results_path, "a") as f:
+                f.write(f"{sample_idx},{question},{answers},{response},{f1},{precision},{recall},{rl}\n")
         
     print("---------------Result Summary---------------------")
     print(f"F1: {np.mean(f1_list)}")
     print(f"RL: {np.mean(rl_list)}")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
