@@ -104,7 +104,7 @@ def get_response(prompt):
         model=MODEL_NAME,  
         messages=[{'role': 'system', 'content': 'You are a helpful assistant.'},
                   {'role': 'user', 'content': prompt}],
-        max_completion_tokens=1000,  # newer parameter (recommended), old version is max_tokens, it inclues both reasoning and answer tokens
+        max_completion_tokens=20,  # newer parameter (recommended), old version is max_tokens, it inclues both reasoning and answer tokens
         #extra_body= {'chat_template_kwargs': {"thinking": False}}, #for vllm/sglang
         extra_body={'thinking': {'type': 'disabled'}}
     )
