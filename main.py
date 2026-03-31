@@ -4,7 +4,6 @@ import string
 import re
 from rouge_score import rouge_scorer
 import numpy as np
-from transformers import AutoTokenizer
 
 
 from openai import OpenAI
@@ -19,7 +18,6 @@ client = OpenAI(
 
 #global model name
 MODEL_NAME = "kimi-k2.5"
-tokenizer = AutoTokenizer.from_pretrained("moonshotai/Kimi-K2.5")
 
 #global eval dataset path
 eval_dataset_path = "data/2wikimqa_200_samples_from_blend.json"
@@ -63,10 +61,30 @@ def build_fewshot_prompt(example):
     q_prompt = f"{q}"
     return doc_prompts, q_prompt
 
-def compute_f1(a_pred, a_gold, tokenizer):
+def compute_f1(a_pred, a_gold):
     a_pred = parse_generation(a_pred)
-    gold_toks = tokenizer.encode(normalize_answer(a_gold))
-    pred_toks = tokenizer.encode(normalize_answer(a_pred))
+    normalized_prediction = normalize_answer(a_pred)
+    normalized_ground_truth = normalize_answer(a_gold)
+
+    if normalized_prediction in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
+        return 0
+    if normalized_ground_truth in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
+        return 0
+
+    #here each word is a token
+    #I do not think we should involve an external LLM tokenizer to compute the F1 score
+    prediction_tokens = normalized_prediction.split()
+    ground_truth_tokens = normalized_ground_truth.split()
+    common = collections.Counter(prediction_tokens) & collections.Counter(ground_truth_tokens)
+    num_same = sum(common.values())
+    if num_same == 0:
+        return 0
+    precision = 1.0 * num_same / len(prediction_tokens)
+    recall = 1.0 * num_same / len(ground_truth_tokens)
+    f1 = (2 * precision * recall) / (precision + recall)
+    return f1
+
+
     common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
     num_same = sum(common.values())
     if len(gold_toks) == 0 or len(pred_toks) == 0:
@@ -142,7 +160,7 @@ def main():
         response = get_completion(prompt)
         print(f"Response: {response}")
 
-        f1 = compute_f1(response, answers, tokenizer)
+        f1 = compute_f1(response, answers)
         print(f"F1: {f1}")
         f1_list.append(f1)
 
