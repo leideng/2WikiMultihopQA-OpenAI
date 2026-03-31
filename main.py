@@ -143,18 +143,18 @@ def build_fewshot_prompt(example):
     q_prompt = f"{q}"
     return doc_prompts, q_prompt
 
-def compute_f1(a_pred, a_gold):
-    if a_pred is None or len(a_pred) == 0:
-        print(f"WARNING:a_pred is None or empty for response: {a_pred}")
+def compute_f1(pred, gold):
+    if pred is None or len(pred) == 0:
+        print(f"WARNING: pred is None or empty for response: {pred}")
         return 0, 0, 0
 
-    if a_gold is None or len(a_gold) == 0:
-        print(f"WARNING:a_gold is None or empty for response: {a_gold}")
+    if gold is None or len(gold) == 0:
+        print(f"WARNING: gold is None or empty for response: {gold}")
         return 0, 0, 0
 
-    a_pred = parse_generation(a_pred)
-    normalized_prediction = normalize_answer(a_pred)
-    normalized_ground_truth = normalize_answer(a_gold)
+    pred = parse_generation(pred)
+    normalized_prediction = normalize_answer(pred)
+    normalized_ground_truth = normalize_answer(gold)
 
     if normalized_prediction in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
         return 0, 0, 0
@@ -251,7 +251,7 @@ async def main():
 
     with open(args.save_results_path, "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["index", "question", "answers", "response", "f1", "precision", "recall", "rl"])
+        writer.writerow(["index", "question", "gold", "response", "f1", "precision", "recall", "rl"])
 
     #CacheBlend Prompt
     #prefix_prompt = "Answer the question based on the given passages. Only give me the answer and do not output any other words.\n\nThe following are given passages.\n"
@@ -269,19 +269,19 @@ async def main():
 
         prompts = []
         questions = []
-        answers_list = []
+        answers = []
         sample_indices = []
 
         for i, ex in enumerate(batch):
             idx = batch_start + i
-            print(f"Processing sample {idx+1} of {len(selected_samples)}")
+            print("="*20+f"Processing sample {idx+1} of {len(selected_samples)}"+"="*20)
 
             question = normalize_question(ex["question"])
-            answers = ex["answers"][0][0]
+            answer = ex["answers"][0][0]
             ctxs = ex["ctxs"]
 
             print(f"Question: {question}")
-            print(f"Answers: {answers}")
+            print(f"Answer: {answer}")
 
             context = ""
             for ctx in ctxs:
@@ -295,7 +295,7 @@ async def main():
 
             prompts.append(prompt)
             questions.append(question)
-            answers_list.append(answers)
+            answers.append(answer)
             sample_indices.append(idx + 1)
 
         if args.debug_mode:
@@ -312,23 +312,23 @@ async def main():
 
         for i, response in enumerate(responses):
             question = questions[i]
-            answers = answers_list[i]
+            answer = answers[i]
             sample_idx = sample_indices[i]
 
             print(f"Response: {response}")
 
-            f1, precision, recall = compute_f1(response, answers)
+            f1, precision, recall = compute_f1(response, answer)
             print(f"F1: {f1}, Precision: {precision}, Recall: {recall}")
             f1_list.append(f1)
             precision_list.append(precision)
             recall_list.append(recall)
-            rl = compute_rl(response, answers)
+            rl = compute_rl(response, answer)
             print(f"RL: {rl}")
             rl_list.append(rl)
 
             with open(args.save_results_path, "a", newline="") as f:
                 writer = csv.writer(f)
-                writer.writerow([sample_idx, question, answers, response, f1, precision, recall, rl])
+                writer.writerow([sample_idx, question, answer, response, f1, precision, recall, rl])
         
     print("---------------Result Summary---------------------")
     avg_f1 = np.mean(f1_list)
