@@ -161,8 +161,8 @@ async def main():
     recall_list =[]
     #max_ctx_len = 4096-196
 
-    MAX_SAMPLES = int(os.getenv("MAX_SAMPLES", "10"))
-    REQUEST_BATCH_SIZE = int(os.getenv("REQUEST_BATCH_SIZE", "4"))
+    MAX_SAMPLES = int(os.getenv("MAX_SAMPLES", "200"))
+    REQUEST_BATCH_SIZE = int(os.getenv("REQUEST_BATCH_SIZE", "20"))
 
     selected_samples = eval_dataset[:MAX_SAMPLES]
     for batch_start in range(0, len(selected_samples), REQUEST_BATCH_SIZE):
@@ -200,7 +200,7 @@ async def main():
             sample_indices.append(idx + 1)
 
         if os.getenv("DEBUG_MODE", "1") == "1":
-            responses = ["It is Ozalj"] * len(prompts)
+            responses = ["yes"] * len(prompts)
         else:
             responses = await get_responses_batched_async(
                 prompts, max_concurrency=REQUEST_BATCH_SIZE
