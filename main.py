@@ -158,7 +158,7 @@ async def main():
     rl_list =[]
     #max_ctx_len = 4096-196
 
-    MAX_SAMPLES = int(os.getenv("MAX_SAMPLES", "1"))
+    MAX_SAMPLES = int(os.getenv("MAX_SAMPLES", "10"))
     REQUEST_BATCH_SIZE = int(os.getenv("REQUEST_BATCH_SIZE", "4"))
 
     selected_samples = eval_dataset[:MAX_SAMPLES]
