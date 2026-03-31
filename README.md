@@ -16,6 +16,7 @@ By default it evaluates:
 ## Requirements
 
 - Python `>= 3.11`
+- `uv` installed
 - An OpenAI-compatible API endpoint
 - Environment variables:
   - `OPENAI_API_KEY`
@@ -24,9 +25,7 @@ By default it evaluates:
 ## Install
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .
+uv sync
 ```
 
 ## Quick start
@@ -34,13 +33,13 @@ pip install -e .
 Run with defaults:
 
 ```bash
-python main.py
+uv run python main.py
 ```
 
 Run with explicit model and output path:
 
 ```bash
-python main.py \
+uv run python main.py \
   --model-name gpt-4.1-mini \
   --save-results-path results/gpt-4.1-mini.csv
 ```
@@ -48,7 +47,13 @@ python main.py \
 Run in debug mode (no API calls, returns mock responses):
 
 ```bash
-python main.py --debug-mode --max-samples 5
+uv run python main.py --debug-mode --max-samples 5
+```
+
+Run tests:
+
+```bash
+uv run python test.py
 ```
 
 ## CLI options
