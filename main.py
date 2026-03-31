@@ -19,7 +19,7 @@ DEFAULT_MAX_SAMPLES = 200
 DEFAULT_REQUEST_BATCH_SIZE = 20
 DEFAULT_ENABLE_THINKING = False
 DEFAULT_DEBUG_MODE = False
-DEFAULT_SAVE_RESULTS_PATH = f"results/{DEFAULT_MODEL_NAME}.csv"
+DEFAULT_SAVE_RESULTS_PATH_TEMPLATE = "results/{model_name}.csv"
 
 
 
@@ -45,10 +45,10 @@ def parse_args():
     parser.add_argument(
         "--save-results-path",
         type=str,
-        default=DEFAULT_SAVE_RESULTS_PATH,
+        default=None,
         help=(
             "Path to output CSV with evaluation results "
-            f"(default: {DEFAULT_SAVE_RESULTS_PATH})."
+            f"(default: {DEFAULT_SAVE_RESULTS_PATH_TEMPLATE})."
         ),
     )
     parser.add_argument(
@@ -93,7 +93,10 @@ def parse_args():
             f"Use --debug-mode to enable (default: {DEFAULT_DEBUG_MODE})."
         ),
     )
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.save_results_path is None:
+        args.save_results_path = f"results/{args.model_name}.csv"
+    return args
 
 
 def get_required_env(name):
