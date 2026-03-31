@@ -12,6 +12,7 @@ completion = client.chat.completions.create(
 	messages=[{'role': 'system', 'content': 'You are a helpful assistant.'},
 			  {'role': 'user', 'content': 'If 2x+3y=10, 3x-4y=-2; then what is x and y?'}]
 	)
+print("="*50+"completion as json"+"="*50)
 print(completion.model_dump_json())
-print("="*50+"response"+"="*50)
+print("="*55+"response"+"="*55)
 print(completion.choices[0].message.content)
