@@ -8,4 +8,5 @@ dependencies = [
     "numpy>=2.4.4",
     "openai>=2.30.0",
     "rouge-score>=0.1.2",
+    "transformers>=5.4.0",
 ]
