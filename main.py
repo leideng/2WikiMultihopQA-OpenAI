@@ -20,7 +20,6 @@ aclient = AsyncOpenAI(
 
 #global model name
 MODEL_NAME = "kimi-k2.5"
-TOKEN_PARAM = os.getenv("TOKEN_PARAM", "max_completion_tokens")  # use "max_tokens" for many vLLM servers
 DISABLE_THINKING = os.getenv("DISABLE_THINKING", "1") == "1"
 
 #global eval dataset path
@@ -110,7 +109,7 @@ async def get_response_async(prompt):
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt},
         ],
-        TOKEN_PARAM: 20,
+        "max_completion_tokens": 20,
     }
     if DISABLE_THINKING:
         request_kwargs["extra_body"] = {"thinking": {"type": "disabled"}}
@@ -158,6 +157,8 @@ async def main():
 
     f1_list =[]
     rl_list =[]
+    precision_list =[]
+    recall_list =[]
     #max_ctx_len = 4096-196
 
     MAX_SAMPLES = int(os.getenv("MAX_SAMPLES", "10"))
@@ -212,7 +213,8 @@ async def main():
             f1, precision, recall = compute_f1(response, answers)
             print(f"F1: {f1}, Precision: {precision}, Recall: {recall}")
             f1_list.append(f1)
-
+            precision_list.append(precision)
+            recall_list.append(recall)
             rl = compute_rl(response, answers)
             print(f"RL: {rl}")
             rl_list.append(rl)
@@ -222,8 +224,18 @@ async def main():
                 writer.writerow([sample_idx, question, answers, response, f1, precision, recall, rl])
         
     print("---------------Result Summary---------------------")
-    print(f"F1: {np.mean(f1_list)}")
-    print(f"RL: {np.mean(rl_list)}")
+    avg_f1 = np.mean(f1_list)
+    avg_precision = np.mean(precision_list)
+    avg_recall = np.mean(recall_list)
+    avg_rl = np.mean(rl_list)
+    with open(save_results_path, "a", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["", "", "", avg_f1, avg_precision, avg_recall, avg_rl])
+    print(f"F1: {avg_f1}")
+    print(f"Precision: {avg_precision}")
+    print(f"Recall: {avg_recall}")
+    print(f"RL: {avg_rl}")
+    print("----------------------------------------------------")
 
 if __name__ == "__main__":
     asyncio.run(main())
