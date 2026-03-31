@@ -1,11 +1,12 @@
 index,question,answers,response,f1,precision,recall,rl
-1,where was the wife of Francis I Rákóczi born?,Ozalj,Croatia, as she was a Croatian countess.,0,0,0,0.0
-2,who is Sobe (Sister Of Saint Anne)'s grandchild?,John the Baptist,St. Elizabeth (Elizabeth, the mother of John the Baptist).,0.4444444444444445,0.2857142857142857,1.0,0.5
-3,where does the director of film Man At Bath work at?,Cahiers du cinéma,I need to find where the director of "Man At Bath" works. From the context, ",0,0,0,0.0
-4,do both Beauty And The Bad Man and Wild Child (Film) films have the directors from the same country?,no,Yes.,0,0,0,0.0
-5,what is the date of birth of William Paulet, 3Rd Marquess Of Winchester's father?,1510,William Paulet, 3rd Marquess of Winchester's father was John Paulet, ,0,0,0,0.0
-6,who is Edward Watson, Viscount Sondes's paternal grandfather?,Edward Watson,Lewis Watson, 1st Earl of Rockingham.,0.25,0.16666666666666666,0.5,0.25
-7,what is the date of death of Humphrey De Bohun, 7Th Earl Of Hereford's father?,16 September 1360,September 16, 1360,1.0,1.0,1.0,0.6666666666666666
-8,who is Helmichis's father-in-law?,Cunimund,Alboin, the king of the Lombards. Helmichis married Rosamund, Alb,0,0,0,0.0
-9,where did Helena Carroll's father study?,St Patrick's College,Trinity College, Dublin.,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.28571428571428575
-10,where does the director of film Wine Of Morning work at?,Bob Jones University,Bob Jones University.,1.0,1.0,1.0,1.0
+1,where was the wife of Francis I Rákóczi born?,Ozalj,It is Ozalj,0.5,0.3333333333333333,1.0,0.5
+2,who is Sobe (Sister Of Saint Anne)'s grandchild?,John the Baptist,It is Ozalj,0,0,0,0.0
+3,where does the director of film Man At Bath work at?,Cahiers du cinéma,It is Ozalj,0,0,0,0.0
+4,do both Beauty And The Bad Man and Wild Child (Film) films have the directors from the same country?,no,It is Ozalj,0,0,0,0.0
+5,"what is the date of birth of William Paulet, 3Rd Marquess Of Winchester's father?",1510,It is Ozalj,0,0,0,0.0
+6,"who is Edward Watson, Viscount Sondes's paternal grandfather?",Edward Watson,It is Ozalj,0,0,0,0.0
+7,"what is the date of death of Humphrey De Bohun, 7Th Earl Of Hereford's father?",16 September 1360,It is Ozalj,0,0,0,0.0
+8,who is Helmichis's father-in-law?,Cunimund,It is Ozalj,0,0,0,0.0
+9,where did Helena Carroll's father study?,St Patrick's College,It is Ozalj,0,0,0,0.0
+10,where does the director of film Wine Of Morning work at?,Bob Jones University,It is Ozalj,0,0,0,0.0
+,,,,0.05,0.03333333333333333,0.1,0.05

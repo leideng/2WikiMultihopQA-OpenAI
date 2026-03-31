@@ -199,9 +199,12 @@ async def main():
             answers_list.append(answers)
             sample_indices.append(idx + 1)
 
-        responses = await get_responses_batched_async(
-            prompts, max_concurrency=REQUEST_BATCH_SIZE
-        )
+        if os.getenv("DEBUG_MODE", "1") == "1":
+            responses = ["It is Ozalj"] * len(prompts)
+        else:
+            responses = await get_responses_batched_async(
+                prompts, max_concurrency=REQUEST_BATCH_SIZE
+            )
 
         for i, response in enumerate(responses):
             question = questions[i]
@@ -230,7 +233,7 @@ async def main():
     avg_rl = np.mean(rl_list)
     with open(save_results_path, "a", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["", "", "", avg_f1, avg_precision, avg_recall, avg_rl])
+        writer.writerow(["", "", "", "", avg_f1, avg_precision, avg_recall, avg_rl])
     print(f"F1: {avg_f1}")
     print(f"Precision: {avg_precision}")
     print(f"Recall: {avg_recall}")
