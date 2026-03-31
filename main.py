@@ -105,6 +105,8 @@ def get_response(prompt):
         messages=[{'role': 'system', 'content': 'You are a helpful assistant.'},
                   {'role': 'user', 'content': prompt}],
         max_completion_tokens=1000,  # newer parameter (recommended), old version is max_tokens, it inclues both reasoning and answer tokens
+        #extra_body= {'chat_template_kwargs': {"thinking": False}}, #for vllm/sglang
+        extra_body={'thinking': {'type': 'disabled'}}
     )
 
     print("="*50+"completion as json"+"="*50)
@@ -161,7 +163,7 @@ def main():
         #we use longbench's prompt template for 2WikiMQA
         prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\nQuestion: {question} Answer:"
 
-        print(f"Prompt(short): {prompt[:500]}...{prompt[-500:]}")
+        print(f"Prompt(short): {prompt[:500]}\n......\n{prompt[-500:]}")
 
         response = get_response(prompt)
 
