@@ -62,6 +62,14 @@ def build_fewshot_prompt(example):
     return doc_prompts, q_prompt
 
 def compute_f1(a_pred, a_gold):
+    if a_pred is None or len(a_pred) == 0:
+        print(f"WARNING:a_pred is None or empty for response: {a_pred}")
+        return 0, 0, 0
+
+    if a_gold is None or len(a_gold) == 0:
+        print(f"WARNING:a_gold is None or empty for response: {a_gold}")
+        return 0, 0, 0
+
     a_pred = parse_generation(a_pred)
     normalized_prediction = normalize_answer(a_pred)
     normalized_ground_truth = normalize_answer(a_gold)
@@ -84,19 +92,6 @@ def compute_f1(a_pred, a_gold):
     f1 = (2 * precision * recall) / (precision + recall)
     return f1, precision, recall
 
-
-    common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
-    num_same = sum(common.values())
-    if len(gold_toks) == 0 or len(pred_toks) == 0:
-        # If either is no-answer, then F1 is 1 if they agree, 0 otherwise
-        return int(gold_toks == pred_toks)
-    if num_same == 0:
-        return 0
-    precision = 1.0 * num_same / len(pred_toks)
-    recall = 1.0 * num_same / len(gold_toks)
-    f1 = (2 * precision * recall) / (precision + recall)
-    return f1
-
 def compute_rl(pred, gold):
     scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
     rougeL = scorer.score(gold, pred)['rougeL'].fmeasure
@@ -104,13 +99,20 @@ def compute_rl(pred, gold):
 
 
 
-def get_completion(prompt):
+def get_response(prompt):
     completion = client.chat.completions.create(
         model=MODEL_NAME,  
         messages=[{'role': 'system', 'content': 'You are a helpful assistant.'},
                   {'role': 'user', 'content': prompt}],
-        max_completion_tokens=20,  # newer parameter (recommended), old version is max_tokens
+        max_completion_tokens=1000,  # newer parameter (recommended), old version is max_tokens, it inclues both reasoning and answer tokens
     )
+
+    print("="*50+"completion as json"+"="*50)
+    print(completion.model_dump_json())
+
+    print("="*55+"response"+"="*55) 
+    print(completion.choices[0].message.content)
+
     return completion.choices[0].message.content
 
 
@@ -118,7 +120,7 @@ def main():
     try:
         with open(eval_dataset_path) as f:
             eval_dataset = json.load(f)
-        print(f"Dataset loaded successfully with {len(eval_dataset)} samples")
+        print(f"Dataset loaded successfully with {len(eval_dataset)} samples from {eval_dataset_path}")
     except Exception as e:
         print(f"Error loading dataset: {e}")
         exit(1)
@@ -148,22 +150,26 @@ def main():
 
         ctxs = ex["ctxs"]
         print(f"Question: {question}")
-        print(f"Contexts: {ctxs}")
         print(f"Answers: {answers}")
 
         context=""
         for ctx in ctxs:
             context += f"{ctx['title']}\n\n{ctx['text']}\n\n"
         
+        print(f"Context: {len(ctxs)} chunks with total {len(context)} characters")
 
         #we use longbench's prompt template for 2WikiMQA
         prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\nQuestion: {question} Answer:"
 
-        print(f"Prompt: {prompt}")
+        print(f"Prompt(short): {prompt[:500]}...{prompt[-500:]}")
 
-        #response = get_completion(prompt)
-        response = "it is Ozalj"
+        response = get_response(prompt)
+
+        #for debugging
+        #response = "It is Ozalj"
+        
         print(f"Response: {response}")
+        
 
         f1, precision, recall = compute_f1(response, answers)
         print(f"F1: {f1}, Precision: {precision}, Recall: {recall}")
