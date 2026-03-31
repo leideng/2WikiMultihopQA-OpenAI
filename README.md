@@ -47,10 +47,10 @@ uv run python main.py \
 Run in debug mode (no API calls, returns mock responses):
 
 ```bash
-uv run python main.py --debug-mode --max-samples 5
+uv run python main.py --debug-mode
 ```
 
-Run tests:
+Run quick test for API call:
 
 ```bash
 uv run python test.py
@@ -67,6 +67,30 @@ uv run python test.py
 --max-samples               Number of samples to evaluate
 --request-batch-size        Async request batch size / concurrency
 --debug-mode                Skip API calls and use mock outputs
+```
+
+## Full CLI help usage
+```
+usage: main.py [-h] [--model-name MODEL_NAME] [--eval-dataset-path EVAL_DATASET_PATH] [--save-results-path SAVE_RESULTS_PATH] [--enable-thinking] [--max-completion-tokens MAX_COMPLETION_TOKENS] [--max-samples MAX_SAMPLES] [--request-batch-size REQUEST_BATCH_SIZE] [--debug-mode]
+
+Evaluate a model on the 2WikiMultihopQA dataset.
+
+options:
+  -h, --help            show this help message and exit
+  --model-name MODEL_NAME
+                        Model name for chat completions (default: kimi-k2.5).
+  --eval-dataset-path EVAL_DATASET_PATH
+                        Path to the evaluation dataset JSON file (default: data/2wikimqa_200_samples_from_blend.json).
+  --save-results-path SAVE_RESULTS_PATH
+                        Path to output CSV with evaluation results (default: results/{model_name}.csv).
+  --enable-thinking     Whether to enable model thinking mode. Use --enable-thinking to enable (default: False).
+  --max-completion-tokens MAX_COMPLETION_TOKENS
+                        Maximum number of completion tokens per request (default: 20).
+  --max-samples MAX_SAMPLES
+                        Maximum number of samples to evaluate (default: 200).
+  --request-batch-size REQUEST_BATCH_SIZE
+                        Concurrent request batch size for async inference (default: 20).
+  --debug-mode          Run without API requests by returning mock responses. Use --debug-mode to enable (default: False).
 ```
 
 ## Output
