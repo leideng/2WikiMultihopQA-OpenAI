@@ -22,7 +22,7 @@ MODEL_NAME = "kimi-k2.5"
 tokenizer = AutoTokenizer.from_pretrained("moonshotai/Kimi-K2.5")
 
 #global eval dataset path
-eval_dataset_path = "2wikimqa_200_samples_from_blend.json"
+eval_dataset_path = "data/2wikimqa_200_samples_from_blend.json"
 save_results_path = f"results/{MODEL_NAME}.csv"
 
 
