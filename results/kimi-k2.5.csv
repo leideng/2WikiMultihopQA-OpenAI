@@ -1,6 +1,6 @@
-index,question,answers,response,f1,precision,recall,rl
-1,where was the wife of Francis I Rákóczi born?,Ozalj,Croatia (Jelena Zrinska/Zrínyi Ilona was a,0,0,0,0.0
-2,who is Sobe (Sister Of Saint Anne)'s grandchild?,John the Baptist,"Elizabeth, the mother of John the Baptist.",0.5714285714285715,0.4,1.0,0.6
-3,where does the director of film Man At Bath work at?,Cahiers du cinéma,Odeon-Théâtre de l'Europe.,0,0,0,0.0
+index,question,gold,response,f1,precision,recall,rl
+1,where was the wife of Francis I Rákóczi born?,Ozalj,"Croatia. Jelena Zrinska (Ilona Zrínyi),",0,0,0,0.0
+2,who is Sobe (Sister Of Saint Anne)'s grandchild?,John the Baptist,"Saint Elizabeth, mother of John the Baptist.",0.5,0.3333333333333333,1.0,0.6
+3,where does the director of film Man At Bath work at?,Cahiers du cinéma,"Based on the information provided, there is no specific information about where the director of ""Man At Bath",0,0,0,0.0
 4,do both Beauty And The Bad Man and Wild Child (Film) films have the directors from the same country?,no,No.,1.0,1.0,1.0,1.0
-,,,,0.3928571428571429,0.35,0.5,0.4
+,,,,0.375,0.3333333333333333,0.5,0.4
