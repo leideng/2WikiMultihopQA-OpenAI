@@ -23,7 +23,7 @@ tokenizer = AutoTokenizer.from_pretrained("moonshotai/Kimi-K2.5")
 
 #global eval dataset path
 eval_dataset_path = "2wikimqa_200_samples_from_blend.json"
-
+save_results_path = f"results/{MODEL_NAME}.csv"
 
 
 def normalize_question(question):
@@ -57,7 +57,6 @@ def normalize_answer(s):
     return white_space_fix(remove_articles(remove_punc(lower(s))))
 
 
-
 def build_fewshot_prompt(example):
     q = "\n\n"+example["question"]
     doc_prompts = [f"{ctx['text']}" for ctx in example["ctxs"]]
@@ -87,7 +86,6 @@ def compute_rl(pred, gold):
 
 
 
-
 def get_completion(prompt):
     completion = client.chat.completions.create(
         model=MODEL_NAME,  
@@ -106,11 +104,14 @@ def main():
     except Exception as e:
         print(f"Error loading dataset: {e}")
         exit(1)
+    
 
-    tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-0.6B")
+    with open(save_results_path, "w") as f:
+        f.write("index,question,answers,response,f1,rl\n")
 
-    prefix_prompt = "Answer the question based on the given passages. Only give me the answer and do not output any other words.\n\nThe following are given passages.\n"
-    query_prompt = f"\n\nAnswer the question based on the given passages. Answer the question within 5 words. Do NOT repeat the question or output any other words. Question: "
+    #CacheBlend Prompt
+    #prefix_prompt = "Answer the question based on the given passages. Only give me the answer and do not output any other words.\n\nThe following are given passages.\n"
+    #query_prompt = f"\n\nAnswer the question based on the given passages. Answer the question within 5 words. Do NOT repeat the question or output any other words. Question: "
 
     f1_list =[]
     rl_list =[]
@@ -134,7 +135,9 @@ def main():
         
 
         #we use longbench's prompt template for 2WikiMQA
-        prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nQuestion: {question} Answer:"
+        prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\nQuestion: {question} Answer:"
+
+        print(f"Prompt: {prompt}")
 
         response = get_completion(prompt)
         print(f"Response: {response}")
@@ -146,6 +149,9 @@ def main():
         rl = compute_rl(response, answers)
         print(f"RL: {rl}")
         rl_list.append(rl)
+
+        with open(save_results_path, "a") as f:
+            f.write(f"{idx+1},{question},{answers},{response},{f1},{rl}\n")
         
     print("---------------Result Summary---------------------")
     print(f"F1: {np.mean(f1_list)}")
