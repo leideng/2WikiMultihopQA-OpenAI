@@ -135,7 +135,11 @@ def main():
     rl_list =[]
     #max_ctx_len = 4096-196
 
+    BS = 1
     for idx, ex in enumerate(eval_dataset):
+        if idx >= BS:
+            break
+
         print(f"Processing sample {idx+1} of {len(eval_dataset)}")
 
         question = ex["question"]
