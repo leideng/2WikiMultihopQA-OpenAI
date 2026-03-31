@@ -53,11 +53,11 @@ def parse_args():
     )
     parser.add_argument(
         "--enable-thinking",
-        action=argparse.BooleanOptionalAction,
+        action="store_true",
         default=DEFAULT_ENABLE_THINKING,
         help=(
             "Whether to enable model thinking mode. "
-            f"Use --enable-thinking or --no-enable-thinking (default: {DEFAULT_ENABLE_THINKING})."
+            f"Use --enable-thinking to enable (default: {DEFAULT_ENABLE_THINKING})."
         ),
     )
     parser.add_argument(
@@ -86,11 +86,11 @@ def parse_args():
     )
     parser.add_argument(
         "--debug-mode",
-        action=argparse.BooleanOptionalAction,
+        action="store_true",
         default=DEFAULT_DEBUG_MODE,
         help=(
             "Run without API requests by returning mock responses. "
-            f"Use --debug-mode or --no-debug-mode (default: {DEFAULT_DEBUG_MODE})."
+            f"Use --debug-mode to enable (default: {DEFAULT_DEBUG_MODE})."
         ),
     )
     return parser.parse_args()
