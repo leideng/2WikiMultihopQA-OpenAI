@@ -3,6 +3,7 @@ import collections
 import string
 import re
 import asyncio
+import csv
 from rouge_score import rouge_scorer
 import numpy as np
 
@@ -147,8 +148,9 @@ async def main():
         exit(1)
     
 
-    with open(save_results_path, "w") as f:
-        f.write("index,question,answers,response,f1,precision,recall,rl\n")
+    with open(save_results_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["index", "question", "answers", "response", "f1", "precision", "recall", "rl"])
 
     #CacheBlend Prompt
     #prefix_prompt = "Answer the question based on the given passages. Only give me the answer and do not output any other words.\n\nThe following are given passages.\n"
@@ -215,8 +217,9 @@ async def main():
             print(f"RL: {rl}")
             rl_list.append(rl)
 
-            with open(save_results_path, "a") as f:
-                f.write(f"{sample_idx},{question},{answers},{response},{f1},{precision},{recall},{rl}\n")
+            with open(save_results_path, "a", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow([sample_idx, question, answers, response, f1, precision, recall, rl])
         
     print("---------------Result Summary---------------------")
     print(f"F1: {np.mean(f1_list)}")
