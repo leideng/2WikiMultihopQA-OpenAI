@@ -195,11 +195,11 @@ async def get_response_async(client, prompt, model_name, enable_thinking, max_co
 
     completion = await client.chat.completions.create(**request_kwargs)
 
-    print("="*50+"completion as json"+"="*50)
-    print(completion.model_dump_json())
+    #print("="*50+"completion as json"+"="*50)
+    #print(completion.model_dump_json())
 
-    print("="*55+"response"+"="*55)
-    print(completion.choices[0].message.content)
+    #print("="*55+"response"+"="*55)
+    #print(completion.choices[0].message.content)
 
     return completion.choices[0].message.content
 
