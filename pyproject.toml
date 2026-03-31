@@ -1,7 +1,7 @@
 [project]
 name = "2wikimultihopqa-openai"
 version = "0.1.0"
-description = "Add your description here"
+description = "OpenAI-compatible http client to evaluate 2WikiMultihopQA"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = []
