@@ -4,6 +4,7 @@ import string
 import re
 import asyncio
 import csv
+import argparse
 from rouge_score import rouge_scorer
 import numpy as np
 
@@ -11,20 +12,95 @@ import numpy as np
 from openai import AsyncOpenAI
 import os
 
-#global client
-aclient = AsyncOpenAI(
-	api_key=os.getenv("OPENAI_API_KEY"),
-	base_url=os.getenv("OPENAI_BASE_URL")
-)
+DEFAULT_MODEL_NAME = "kimi-k2.5"
+DEFAULT_EVAL_DATASET_PATH = "data/2wikimqa_200_samples_from_blend.json"
+DEFAULT_MAX_COMPLETION_TOKENS = 20
+DEFAULT_MAX_SAMPLES = 200
+DEFAULT_REQUEST_BATCH_SIZE = 20
+DEFAULT_ENABLE_THINKING = False
+DEFAULT_DEBUG_MODE = False
+DEFAULT_SAVE_RESULTS_PATH = f"results/{DEFAULT_MODEL_NAME}.csv"
 
 
-#global model name
-MODEL_NAME = "kimi-k2.5"
-DISABLE_THINKING = os.getenv("DISABLE_THINKING", "1") == "1"
 
-#global eval dataset path
-eval_dataset_path = "data/2wikimqa_200_samples_from_blend.json"
-save_results_path = f"results/{MODEL_NAME}.csv"
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Evaluate a model on the 2WikiMultihopQA dataset."
+    )
+    parser.add_argument(
+        "--model-name",
+        type=str,
+        default=DEFAULT_MODEL_NAME,
+        help=f"Model name for chat completions (default: {DEFAULT_MODEL_NAME}).",
+    )
+    parser.add_argument(
+        "--eval-dataset-path",
+        type=str,
+        default=DEFAULT_EVAL_DATASET_PATH,
+        help=(
+            "Path to the evaluation dataset JSON file "
+            f"(default: {DEFAULT_EVAL_DATASET_PATH})."
+        ),
+    )
+    parser.add_argument(
+        "--save-results-path",
+        type=str,
+        default=DEFAULT_SAVE_RESULTS_PATH,
+        help=(
+            "Path to output CSV with evaluation results "
+            f"(default: {DEFAULT_SAVE_RESULTS_PATH})."
+        ),
+    )
+    parser.add_argument(
+        "--enable-thinking",
+        action=argparse.BooleanOptionalAction,
+        default=DEFAULT_ENABLE_THINKING,
+        help=(
+            "Whether to enable model thinking mode. "
+            f"Use --enable-thinking or --no-enable-thinking (default: {DEFAULT_ENABLE_THINKING})."
+        ),
+    )
+    parser.add_argument(
+        "--max-completion-tokens",
+        type=int,
+        default=DEFAULT_MAX_COMPLETION_TOKENS,
+        help=(
+            "Maximum number of completion tokens per request "
+            f"(default: {DEFAULT_MAX_COMPLETION_TOKENS})."
+        ),
+    )
+    parser.add_argument(
+        "--max-samples",
+        type=int,
+        default=DEFAULT_MAX_SAMPLES,
+        help=f"Maximum number of samples to evaluate (default: {DEFAULT_MAX_SAMPLES}).",
+    )
+    parser.add_argument(
+        "--request-batch-size",
+        type=int,
+        default=DEFAULT_REQUEST_BATCH_SIZE,
+        help=(
+            "Concurrent request batch size for async inference "
+            f"(default: {DEFAULT_REQUEST_BATCH_SIZE})."
+        ),
+    )
+    parser.add_argument(
+        "--debug-mode",
+        action=argparse.BooleanOptionalAction,
+        default=DEFAULT_DEBUG_MODE,
+        help=(
+            "Run without API requests by returning mock responses. "
+            f"Use --debug-mode or --no-debug-mode (default: {DEFAULT_DEBUG_MODE})."
+        ),
+    )
+    return parser.parse_args()
+
+
+def get_required_env(name):
+    value = os.getenv(name)
+    if value is None or value.strip() == "":
+        raise ValueError(f"Required environment variable `{name}` is missing or empty.")
+    return value
 
 
 def normalize_question(question):
@@ -102,19 +178,19 @@ def compute_rl(pred, gold):
 
 
 
-async def get_response_async(prompt):
+async def get_response_async(client, prompt, model_name, enable_thinking, max_completion_tokens):
     request_kwargs = {
-        "model": MODEL_NAME,
+        "model": model_name,
         "messages": [
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt},
         ],
-        "max_completion_tokens": 20,
+        "max_completion_tokens": max_completion_tokens,
     }
-    if DISABLE_THINKING:
+    if not enable_thinking:
         request_kwargs["extra_body"] = {"thinking": {"type": "disabled"}}
 
-    completion = await aclient.chat.completions.create(**request_kwargs)
+    completion = await client.chat.completions.create(**request_kwargs)
 
     print("="*50+"completion as json"+"="*50)
     print(completion.model_dump_json())
@@ -125,29 +201,52 @@ async def get_response_async(prompt):
     return completion.choices[0].message.content
 
 
-async def get_responses_batched_async(prompts, max_concurrency=4):
+async def get_responses_batched_async(
+    client,
+    prompts,
+    model_name,
+    enable_thinking,
+    max_completion_tokens,
+    max_concurrency=4,
+):
     semaphore = asyncio.Semaphore(max_concurrency)
     responses = [None] * len(prompts)
 
     async def _run_one(idx, prompt):
         async with semaphore:
-            responses[idx] = await get_response_async(prompt)
+            responses[idx] = await get_response_async(
+                client,
+                prompt,
+                model_name,
+                enable_thinking,
+                max_completion_tokens,
+            )
 
     await asyncio.gather(*[_run_one(idx, prompt) for idx, prompt in enumerate(prompts)])
     return responses
 
 
 async def main():
+    args = parse_args()
+    aclient = None
+    if not args.debug_mode:
+        api_key = get_required_env("OPENAI_API_KEY")
+        base_url = get_required_env("OPENAI_BASE_URL")
+        aclient = AsyncOpenAI(api_key=api_key, base_url=base_url)
+
     try:
-        with open(eval_dataset_path) as f:
+        with open(args.eval_dataset_path) as f:
             eval_dataset = json.load(f)
-        print(f"Dataset loaded successfully with {len(eval_dataset)} samples from {eval_dataset_path}")
+        print(
+            "Dataset loaded successfully with "
+            f"{len(eval_dataset)} samples from {args.eval_dataset_path}"
+        )
     except Exception as e:
         print(f"Error loading dataset: {e}")
         exit(1)
     
 
-    with open(save_results_path, "w", newline="") as f:
+    with open(args.save_results_path, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["index", "question", "answers", "response", "f1", "precision", "recall", "rl"])
 
@@ -161,12 +260,9 @@ async def main():
     recall_list =[]
     #max_ctx_len = 4096-196
 
-    MAX_SAMPLES = int(os.getenv("MAX_SAMPLES", "200"))
-    REQUEST_BATCH_SIZE = int(os.getenv("REQUEST_BATCH_SIZE", "20"))
-
-    selected_samples = eval_dataset[:MAX_SAMPLES]
-    for batch_start in range(0, len(selected_samples), REQUEST_BATCH_SIZE):
-        batch = selected_samples[batch_start : batch_start + REQUEST_BATCH_SIZE]
+    selected_samples = eval_dataset[:args.max_samples]
+    for batch_start in range(0, len(selected_samples), args.request_batch_size):
+        batch = selected_samples[batch_start : batch_start + args.request_batch_size]
 
         prompts = []
         questions = []
@@ -199,11 +295,16 @@ async def main():
             answers_list.append(answers)
             sample_indices.append(idx + 1)
 
-        if os.getenv("DEBUG_MODE", "1") == "1":
+        if args.debug_mode:
             responses = ["yes"] * len(prompts)
         else:
             responses = await get_responses_batched_async(
-                prompts, max_concurrency=REQUEST_BATCH_SIZE
+                aclient,
+                prompts,
+                model_name=args.model_name,
+                enable_thinking=args.enable_thinking,
+                max_completion_tokens=args.max_completion_tokens,
+                max_concurrency=args.request_batch_size,
             )
 
         for i, response in enumerate(responses):
@@ -222,7 +323,7 @@ async def main():
             print(f"RL: {rl}")
             rl_list.append(rl)
 
-            with open(save_results_path, "a", newline="") as f:
+            with open(args.save_results_path, "a", newline="") as f:
                 writer = csv.writer(f)
                 writer.writerow([sample_idx, question, answers, response, f1, precision, recall, rl])
         
@@ -231,7 +332,7 @@ async def main():
     avg_precision = np.mean(precision_list)
     avg_recall = np.mean(recall_list)
     avg_rl = np.mean(rl_list)
-    with open(save_results_path, "a", newline="") as f:
+    with open(args.save_results_path, "a", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(["", "", "", "", avg_f1, avg_precision, avg_recall, avg_rl])
     print(f"F1: {avg_f1}")

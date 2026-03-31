@@ -1,0 +1,3 @@
+index,question,answers,response,f1,precision,recall,rl
+1,where was the wife of Francis I Rákóczi born?,Ozalj,yes,0,0,0,0.0
+,,,,0.0,0.0,0.0,0.0
