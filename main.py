@@ -67,9 +67,9 @@ def compute_f1(a_pred, a_gold):
     normalized_ground_truth = normalize_answer(a_gold)
 
     if normalized_prediction in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
-        return 0
+        return 0, 0, 0
     if normalized_ground_truth in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
-        return 0
+        return 0, 0, 0
 
     #here each word is a token
     #I do not think we should involve an external LLM tokenizer to compute the F1 score
@@ -78,11 +78,11 @@ def compute_f1(a_pred, a_gold):
     common = collections.Counter(prediction_tokens) & collections.Counter(ground_truth_tokens)
     num_same = sum(common.values())
     if num_same == 0:
-        return 0
+        return 0, 0, 0
     precision = 1.0 * num_same / len(prediction_tokens)
     recall = 1.0 * num_same / len(ground_truth_tokens)
     f1 = (2 * precision * recall) / (precision + recall)
-    return f1
+    return f1, precision, recall
 
 
     common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
@@ -125,7 +125,7 @@ def main():
     
 
     with open(save_results_path, "w") as f:
-        f.write("index,question,answers,response,f1,rl\n")
+        f.write("index,question,answers,response,f1,precision,recall,rl\n")
 
     #CacheBlend Prompt
     #prefix_prompt = "Answer the question based on the given passages. Only give me the answer and do not output any other words.\n\nThe following are given passages.\n"
@@ -161,11 +161,12 @@ def main():
 
         print(f"Prompt: {prompt}")
 
-        response = get_completion(prompt)
+        #response = get_completion(prompt)
+        response = "it is Ozalj"
         print(f"Response: {response}")
 
-        f1 = compute_f1(response, answers)
-        print(f"F1: {f1}")
+        f1, precision, recall = compute_f1(response, answers)
+        print(f"F1: {f1}, Precision: {precision}, Recall: {recall}")
         f1_list.append(f1)
 
         rl = compute_rl(response, answers)
@@ -173,7 +174,7 @@ def main():
         rl_list.append(rl)
 
         with open(save_results_path, "a") as f:
-            f.write(f"{idx+1},{question},{answers},{response},{f1},{rl}\n")
+            f.write(f"{idx+1},{question},{answers},{response},{f1},{precision},{recall},{rl}\n")
         
     print("---------------Result Summary---------------------")
     print(f"F1: {np.mean(f1_list)}")
