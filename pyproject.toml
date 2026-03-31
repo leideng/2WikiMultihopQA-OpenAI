@@ -5,5 +5,6 @@ description = "OpenAI-compatible http client to evaluate 2WikiMultihopQA"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "numpy>=2.4.4",
     "openai>=2.30.0",
 ]
