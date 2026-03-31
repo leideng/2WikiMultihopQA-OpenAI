@@ -66,11 +66,8 @@ def build_fewshot_prompt(example):
 
 def compute_f1(a_pred, a_gold, tokenizer):
     a_pred = parse_generation(a_pred)
-    gold_toks = tokenizer.encode(normalize_answer(a_gold))[1:]
-    pred_toks = tokenizer.encode(normalize_answer(a_pred))[1:]
-    #gold_toks = tokenizer.encode_chat_completion(ChatCompletionRequest(messages=[UserMessage(content=normalize_answer(a_gold))])).tokens[4:-4]
-    #pred_toks = tokenizer.encode_chat_completion(ChatCompletionRequest(messages=[UserMessage(content=normalize_answer(a_pred))])).tokens[4:-4]
-    #pdb.set_trace()
+    gold_toks = tokenizer.encode(normalize_answer(a_gold))
+    pred_toks = tokenizer.encode(normalize_answer(a_pred))
     common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
     num_same = sum(common.values())
     if len(gold_toks) == 0 or len(pred_toks) == 0:
