@@ -1,0 +1,5 @@
+index,question,gold,response,f1,precision,recall,rl
+1,where was the wife of Francis I Rákóczi born?,Ozalj,"In Galata, district of Constantinople.",0,0,0,0.0
+2,who is Sobe (Sister Of Saint Anne)'s grandchild?,John the Baptist,"Elizabeth, the mother of John the Baptist.",0.5714285714285715,0.4,1.0,0.6
+3,where does the director of film Man At Bath work at?,Cahiers du cinéma,Omar's flat located in the outskirts of Paris.,0,0,0,0.0
+,,,,0.1904761904761905,0.13333333333333333,0.3333333333333333,0.19999999999999998
