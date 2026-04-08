@@ -1,0 +1,220 @@
+index,question,gold,response,f1,precision,recall,rl
+1,where was the wife of Francis I Rákóczi born?,Ozalj,Croatia,0,0,0,0.0
+2,who is Sobe (Sister Of Saint Anne)'s grandchild?,John the Baptist,Elizabeth,0,0,0,0.0
+3,where does the director of film Man At Bath work at?,Cahiers du cinéma,"The question asks: ""where does the director of film Man At Bath work at?"" Based",0,0,0,0.0
+4,do both Beauty And The Bad Man and Wild Child (Film) films have the directors from the same country?,no,No,1.0,1.0,1.0,1.0
+5,"what is the date of birth of William Paulet, 3Rd Marquess Of Winchester's father?",1510,10 March 1572,0,0,0,0.0
+6,"who is Edward Watson, Viscount Sondes's paternal grandfather?",Edward Watson,"Edward Watson, Viscount Sondes's paternal grandfather is Thomas Wentworth, 1st Earl",0.3076923076923077,0.18181818181818182,1.0,0.2857142857142857
+7,"what is the date of death of Humphrey De Bohun, 7Th Earl Of Hereford's father?",16 September 1360,16 September 1360,1.0,1.0,1.0,1.0
+8,who is Helmichis's father-in-law?,Cunimund,cunimund,1.0,1.0,1.0,1.0
+9,where did Helena Carroll's father study?,St Patrick's College,"The question asks: ""where did Helena Carroll's father study?"" Based on the given passages,",0,0,0,0.10526315789473685
+10,where does the director of film Wine Of Morning work at?,Bob Jones University,"Based on the provided passages, the director of the film ""Wine of Morning"" is Katherine Sten",0,0,0,0.0
+11,"which film has the director who was born earlier, The Secret Invasion or The House Of The Seven Hawks?",The House Of The Seven Hawks,The Secret Invasion,0,0,0,0.2222222222222222
+12,"who is the paternal grandmother of Marie Of Brabant, Queen Of France?",Marie of Hohenstaufen,Margaret of Flanders,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.3333333333333333
+13,"who is Renaud Ii, Count Of Soissons's uncle?","Guy II, Count of Soissons","Based on the passages, Renaud II (also spelled Renaud ii), Count of Soissons, was",0.4444444444444444,0.3076923076923077,0.8,0.4210526315789473
+14,when did William Le Poer Trench's father die?,26 April 1872,1839,0,0,0,0.0
+15,which country the director of film Renegade Force is from?,America,"The user asks: ""Answer the question based on the given passages. Only give me the answer",0,0,0,0.0
+16,who is the spouse of the director of film Emergency Wedding?,Ona Munson,"The question asks: ""who is the spouse of the director of film Emergency Wedding?"" The",0,0,0,0.0
+17,"which film came out earlier, Indradhanura Chhai or The Death Of Black King?",The Death Of Black King,Indradhanura Chhai,0,0,0,0.0
+18,do both films The Reincarnation Of Golden Lotus and I'Ll Get By (Film) have the directors from the same country?,no,"I need to find information about two films: ""The Reincarnation Of Golden Lotus"" and",0,0,0,0.0
+19,"are both villages, Rhosgoch and Qaleh-Ye Sahar, located in the same country?",no,Yes,0,0,0,0.0
+20,where was the director of film Kanneshwara Rama born?,Mysore,"Based on the provided passages, there is no information about the birthplace of the director of the film",0,0,0,0.0
+21,where was the place of death of Randi Monsen's father?,Kristiania,"The question asks: ""where was the place of death of Randi Monsen's father?""
+
+Let's",0,0,0,0.0
+22,where did the performer of song I'Ll Say It graduate from?,Lee Strasberg Theatre and Film Institute,"I'm sorry, but I cannot provide an answer to this question. The passages do not mention where",0,0,0,0.0
+23,"which film has the director who was born first, Hell Up In Harlem or The Soviet Story?",Hell Up In Harlem,Hell Up In Harlem,1.0,1.0,1.0,1.0
+24,"who was born first, Cipriano Castro or Damir Nikšić?",Cipriano Castro,"Cipriano Castro was born on 12 October 1858. However, there is no",0.2857142857142857,0.16666666666666666,1.0,0.2857142857142857
+25,"which film has the director who died first, The Year Of The Rabbit or Monster On The Campus?",Monster On The Campus,The question asks which film has the director who died first: The Year Of The Rabbit or Monster,0.11764705882352941,0.07142857142857142,0.3333333333333333,0.0909090909090909
+26,"who is younger, Guy Arvely Dolsin or Altuğ Çelikbilek?",Altuğ Çelikbilek,Altug Celikbilek,0,0,0,0.0
+27,"which song came out first, Joel The Lump Of Coal or Jugband Blues?",Jugband Blues,Jugband Blues,1.0,1.0,1.0,1.0
+28,are both Open Mobile and Primestar located in the same country?,yes,No,0,0,0,0.0
+29,who is the paternal grandfather of Baldwin I Rátót?,Leustach Rátót,Rathold Rátót,0.5,0.5,0.5,0.75
+30,what is the place of birth of Ratna Malla's father?,Nepal,yakshya malla,0,0,0,0.0
+31,"who is Archibald Acheson, 4Th Earl Of Gosford's paternal grandfather?","Archibald Acheson, 2nd Earl of Gosford","Arthur Acheson, 1st Earl of Gosford",0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+32,who is the paternal grandfather of Mark Getty?,Jean Paul Getty,J. Paul Getty,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.6666666666666666
+33,where did the performer of song Fantasy (George Michael Song) die?,"Goring-on-Thames, Oxfordshire","Goring-on-Thames, Oxfordshire",1.0,1.0,1.0,1.0
+34,do director of film Betrayal (1932 Film) and director of film The Godsend (Film) share the same nationality?,yes,No,0,0,0,0.0
+35,"which film whose director was born first, The Abduction Club or Wooden Crosses?",Wooden Crosses,Wooden Crosses,1.0,1.0,1.0,1.0
+36,"which film came out earlier, Above Rubies or The Magic Aster?",Above Rubies,Above Rubies,1.0,1.0,1.0,1.0
+37,"which film has the director who is older than the other, Blue Blood And Red or The Longshot? ?",Blue Blood And Red,Blue Blood And Red,1.0,1.0,1.0,1.0
+38,what is the place of birth of the director of film Clowning Around?,"Castlemaine, Victoria, Australia","The question is asking for the place of birth of the director of the film ""Clowning",0,0,0,0.0
+39,"who was born later, Paul De Scherff or Lyudmyla Olyanovska?",Lyudmyla Olyanovska,I don't know,0,0,0,0.0
+40,where was the place of death of Kamures Kadın's husband?,Constantinople,istanbul,0,0,0,0.0
+41,what is the place of birth of Bernard (Son Of Charles The Fat)'s father?,East Francia,Regensburg,0,0,0,0.0
+42,"which film has the director who died first, Tex And The Lord Of The Deep or Henry Goes Arizona?",Henry Goes Arizona,Henry Goes Arizona,1.0,1.0,1.0,1.0
+43,which country the performer of song I Believe In Your Sweet Love is from?,United Kingdom,United Kingdom,1.0,1.0,1.0,1.0
+44,"which film whose producer was born first, All-American Co-Ed or Lagu Kenangan?",All-American Co-Ed,"The question asks which film had its producer born first: ""All-American Co-Ed"" or """,0.2857142857142857,0.16666666666666666,1.0,0.4210526315789474
+45,what is the place of birth of the director of film A Chrysanthemum Bursts In Cincoesquinas?,Buenos Aires,"The user asks: ""Answer the question based on the given passages. Only give me the answer",0,0,0,0.0
+46,who is the mother-in-law of Louise Of Mecklenburg-Güstrow?,Charlotte Amalie of Hesse-Kassel,Magdalene Sibylle of Holstein-Gottorp,0.25,0.25,0.25,0.20000000000000004
+47,where was the place of death of Agnes Of Hohenstaufen's husband?,Brunswick,Aragon,0,0,0,0.0
+48,who is Marcus Annius Libo's aunt?,Vibia Sabina,Faustina the Elder,0,0,0,0.0
+49,"which film was released more recently, Bajo Otro Sol or Riding The California Trail?",Bajo Otro Sol,Riding the California Trail,0,0,0,0.0
+50,who is the mother of the director of film Dalida (2017 Film)?,Marie Laforêt,Sveva Alviti,0,0,0,0.0
+51,who is the spouse of the director of film Streets Of Blood?,Sandra Nelson,"I can't find any information about a film titled ""Streets of Blood"" in the provided",0,0,0,0.0
+52,when is Henrietta Maria Of Brandenburg-Schwedt's father's birthday?,"May 19, 1669",2 March 1702,0,0,0,0.0
+53,"where was the place of death of Sancha Of Castile, Queen Of Navarre's mother?",Palencia,Pamplona,0,0,0,0.0
+54,"which film was released more recently, Dance With A Stranger or Miley Naa Miley Hum?",Miley Naa Miley Hum,Miley Naa Miley Hum,1.0,1.0,1.0,1.0
+55,"which film has the director who is older, Space Probe Taurus or Tom Mix In Arabia?",Tom Mix In Arabia,Cannot determine based on provided passages.,0,0,0,0.0
+56,"which film has the director died later, Seven In The Sun or Daughter Of The Jungle?",Seven In The Sun,"I need to find out when the directors of these two films died. Looking at the passages:
+
+",0,0,0,0.09523809523809523
+57,"which film was released first, Vacations In Majorca or Dr. Socrates?",Dr. Socrates,Dr. Socrates,1.0,1.0,1.0,1.0
+58,"which film has the director born later, Woman In The Moon or Changeland?",Changeland,Woman In The Moon,0,0,0,0.0
+59,"who is younger, Peter Rosegger or Ruel Redinger?",Ruel Redinger,Peter Rosegger,0,0,0,0.0
+60,who is Pyotr Karatygin's sibling-in-law?,Alexandra Kolosova,Vasily Karatygin,0,0,0,0.0
+61,who is the spouse of the performer of song This Time (Waylon Jennings Song)?,Jessi Colter,"The question asks: ""who is the spouse of the performer of song This Time (Way",0,0,0,0.0
+62,are Twin Cairns Island and Nova Zembla Island located in the same country?,yes,No,0,0,0,0.0
+63,"who died first, Erich Haenisch or William Pooley?",William Pooley,Erich Haenisch,0,0,0,0.0
+64,what nationality is the performer of song You Can?,Sweden,"The question is asking about the nationality of the performer of the song ""You Can.""
+
+From the",0,0,0,0.0
+65,do Nick Varner and Carl Duser share the same nationality?,yes,No,0,0,0,0.0
+66,"which film has the director who died earlier, Melody Of The World or Ladies Love Danger?",Melody Of The World,Melody Of The World,1.0,1.0,1.0,1.0
+67,where was the place of death of the composer of film Miracle Of Marcelino?,Madrid,"The question asks: ""where was the place of death of the composer of film Miracle Of Marcel",0,0,0,0.0
+68,who is the mother of the director of film Atomised (Film)?,Gisela Elsner,I don't know,0,0,0,0.0
+69,"which film has the director who died later, The Great Man'S Lady or La Belle Américaine?",La Belle Américaine,The Great Man's Lady,0,0,0,0.0
+70,what is the place of birth of the director of film Sweepstakes (Film)?,"Oklahoma City, Oklahoma","The question is asking for the place of birth of the director of a film called ""Swe",0,0,0,0.0
+71,where was the place of death of Shahnawaz Bhutto's mother?,Dubai,"The question asks: ""where was the place of death of Shahnawaz Bhutto's",0,0,0,0.0
+72,where was the performer of song Égérie (Song) born?,La Trinité,paris,0,0,0,0.0
+73,who is the father-in-law of Duke William Of Mecklenburg-Schwerin?,Prince Albert of Prussia,Albert of Prussia,0.8571428571428571,1.0,0.75,0.8571428571428571
+74,are Gut (Crișul Alb) and Gepiș both located in the same country?,yes,no,0,0,0,0.0
+75,where was the place of death of Anne Devereux's husband?,Banbury,"The question asks: ""where was the place of death of Anne Devereux's husband?""
+
+Looking",0,0,0,0.0
+76,"who is Sir William Gore, 3Rd Baronet's paternal grandfather?","Sir Paul Gore, 1st Baronet","Sir Ralph Gore, 2nd Baronet",0.6,0.6,0.6,0.6
+77,which country Nizar Al-Mustafa's father is from?,Fatimid caliphate,Egypt,0,0,0,0.0
+78,where was the wife of Lou Breslow born?,"Dayton, Ohio","The question asks about the wife of Lou Breslow, but there's no mention of Lou Breslow",0,0,0,0.0
+79,who is the spouse of the director of film Ann Carver'S Profession?,Ona Munson,"The question asks: ""who is the spouse of the director of film Ann Carver's Profession?""
+
+",0,0,0,0.0
+80,"which film came out earlier, The Drover'S Sweetheart or Pigsty (Film)?",The Drover'S Sweetheart,The Drover's Sweetheart,1.0,1.0,1.0,1.0
+81,what is the place of birth of the director of film Bhagirathi (Film)?,Tumkur,"The question asks: ""what is the place of birth of the director of film Bhagirathi",0,0,0,0.0
+82,"which film came out earlier, Closely Watched Trains or Det Sande Ansigt?",Det Sande Ansigt,Closely Watched Trains,0,0,0,0.0
+83,"which film has the director who died earlier, Il Gaucho or Bomgay?",Bomgay,Il Gaucho,0,0,0,0.0
+84,where was the place of death of Maria (Wife Of Boris I Of Bulgaria)'s husband?,Preslav,"The question asks: ""where was the place of death of Maria (Wife Of Boris I",0,0,0,0.0
+85,"which film came out first, The Pyrammmid or Revolt Of The Praetorians?",Revolt Of The Praetorians,"The user is asking which film came out first: ""The Pyrammmid"" or ""Rev",0,0,0,0.11764705882352941
+86,are both directors of films La Morte Vivante and Stranger On Horseback from the same country?,yes,No,0,0,0,0.0
+87,what is the cause of death of Constantia Eriksdotter's father?,poisoning,I don't know.,0,0,0,0.0
+88,what nationality is the director of film Postmortem (1998 Film)?,America,"The user is asking about the director of the 1998 film ""Postmortem"" and",0,0,0,0.0
+89,which country Keōpūolani's husband is from?,Kingdom of Hawaii,Hawaiʻi,0,0,0,0.0
+90,"which film came out earlier, X-Paroni or Mi Novia Está De Madre?",X-Paroni,X-Paroni,1.0,1.0,1.0,1.0
+91,"which film was released earlier, August Underground'S Penance or Vasantha Raagam?",Vasantha Raagam,August Underground's Penance,0,0,0,0.0
+92,who is the father-in-law of Hong Ra-Hee?,Lee Byung-chul,Hong Jin-Ki,0,0,0,0.0
+93,who is Isabella Of Bourbon's paternal grandfather?,"John I, Duke of Bourbon","Charles I, Duke of Bourbon",0.8000000000000002,0.8,0.8,0.8000000000000002
+94,what is the date of death of Duleep Singh's father?,27 June 1839,"The question asks: ""what is the date of death of Duleep Singh's father?""",0,0,0,0.0
+95,what is the place of birth of the director of film Gunsmoke (Film)?,Gura Humorului,"The question asks: ""what is the place of birth of the director of film Gunsmoke",0,0,0,0.0
+96,"who is the spouse of the performer of song Et Moi, Et Moi, Et Moi?",Françoise Hardy,francoise hardy,0.5,0.5,0.5,0.4
+97,"who lived longer, Charles Wheatstone or Jean-Claude Lauzon?",Charles Wheatstone,Jean-Claude Lauzon,0,0,0,0.0
+98,where was the place of death of Thomas E. Noell's father?,Washington,"Washington, D.C.",0.6666666666666666,0.5,1.0,0.5
+99,"which film has the director died first, Our Agent Tiger or London Melody?",London Melody,London Melody,1.0,1.0,1.0,1.0
+100,who is the paternal grandfather of Diego Fernández De Oviedo?,Flaín Muñoz,"Fernando Fernández de Ovando, 1st Count of Torrelaguna and 1st",0,0,0,0.0
+101,who is the child of the director of film The Trouble With Cali?,Mira Sorvino,adele haenel,0,0,0,0.0
+102,are Ding Yaping and Johann Christian Gustav Lucae of the same nationality?,yes,No,0,0,0,0.0
+103,"which country Dorothea Of Denmark, Duchess Of Mecklenburg's father is from?",Norway,Denmark,0,0,0,0.0
+104,what is the cause of death of Heonjong Of Goryeo's father?,illness,"Heonjong of Goryeo is not mentioned in the given passages. Therefore, I cannot",0,0,0,0.0
+105,where did Mary Of Woodstock's mother die?,Harby,The question asks where Mary of Woodstock's mother died. Let me locate information about Mary of Woodstock,0,0,0,0.0
+106,which award the director of film Tiramisu (2002 Film) earned?,Hong Kong Film Award for Best Director,"The question is about the director of the 2002 film ""Tiramisu"" and asks",0.23529411764705882,0.2,0.2857142857142857,0.1
+107,what is the date of death of the director of film Nallavan Vazhvan?,3 September 1992,30 November 2015,0,0,0,0.0
+108,"who died first, Frederick Cleveland Morgan or Nathaniel Mclenaghan?",Nathaniel Mclenaghan,Frederick Cleveland Morgan,0,0,0,0.0
+109,where did the director of film Balls Out (2014 Film) graduate from?,Tisch,University of Texas,0,0,0,0.0
+110,"which film whose director is younger, Cuchillos De Fuego or A Woman Has Killed?",Cuchillos De Fuego,Cuchillos De Fuego,1.0,1.0,1.0,1.0
+111,"which film was released earlier, Moment Of Danger or The Ballad Of Josie?",Moment Of Danger,Moment Of Danger,1.0,1.0,1.0,1.0
+112,"which magazine was established first, Rock Street Journal or De As?",De As,Rock Street Journal,0,0,0,0.0
+113,"which film has the director who died first, The Piper'S Price or The Blonde From Singapore?",The Piper'S Price,The Piper's Price,1.0,1.0,1.0,1.0
+114,are H. H. Hunnewell and Bob Flanigan (Singer) of the same nationality?,yes,No,0,0,0,0.0
+115,"when was Antoine Philippe, Duke Of Montpensier's mother born?",13 March 1753,"The question asks: ""when was Antoine Philippe, Duke Of Montpensier's mother born?"" I",0,0,0,0.0
+116,"which film has the director who died later, True To The Navy or No Trees In The Street?",No Trees In The Street,No Trees In The Street,0,0,0,1.0
+117,what is the place of birth of the director of film Ninamaninja Kalpadukal?,Methala,"Methala, near Perumbavoor in Kerala",0.33333333333333337,0.2,1.0,0.33333333333333337
+118,"which film came out earlier, Alkohol or Night Of Dark Shadows?",Alkohol,Alkohol,1.0,1.0,1.0,1.0
+119,"which film whose director is younger, Many Tanks Mr. Atkins or Do Musafir?",Do Musafir,Do Musafir,1.0,1.0,1.0,1.0
+120,are Revolt In The Big House and The Fugitive (1914 Film) from the same country?,no,No,1.0,1.0,1.0,1.0
+121,where was the composer of film Consenting Adults (1992 Film) born?,New York,"The question asks: ""where was the composer of film Consenting Adults (1992 Film)",0,0,0,0.0
+122,"which film has the director who died earlier, Tiger In The Smoke or Contragolpe?",Contragolpe,Contragolpe,1.0,1.0,1.0,1.0
+123,where was the place of death of the director of film Jail Yatra?,Mumbai,"The question asks: ""where was the place of death of the director of film Jail Yatra",0,0,0,0.0
+124,"which film came out first, F The Prom or The Comedians Of Comedy?",The Comedians Of Comedy,The Comedians of Comedy,1.0,1.0,1.0,1.0
+125,"which film has the director who was born first, Tombstone Rashomon or Waiting For The Clouds?",Tombstone Rashomon,Waiting For The Clouds,0,0,0,0.0
+126,"which film has the director who was born earlier, Dhuen Ki Lakeer or Bomma Borusa?",Dhuen Ki Lakeer,I don't know,0,0,0,0.0
+127,"which film has the director who was born first, Perdón, Viejita or Smokey And The Bandit?","Perdón, Viejita","Perdón, Viejita",1.0,1.0,1.0,1.0
+128,where did the director of film American Gothic (2007 Film) graduate from?,University of Wisconsin,University of Wisconsin-Madison,0.6666666666666666,0.6666666666666666,0.6666666666666666,0.8571428571428571
+129,was Dudley Russell or Juan René Serrano born first?,Dudley Russell,Dudley Russell,1.0,1.0,1.0,1.0
+130,"who was born first, Vytautas Straižys or Mirjam Polkunen?",Mirjam Polkunen,Vytautas Straižys,0,0,0,0.0
+131,where did Grand Duchess Elena Vladimirovna Of Russia's father die?,Saint Petersburg,In Saint Petersburg.,0.8,0.6666666666666666,1.0,0.8
+132,where was the director of film The Dinner (2013 Film) born?,Eindhoven,"The user is asking about the director of a film called ""The Dinner"" (2013 Film",0,0,0,0.0
+133,"which magazine was established first, Women'S Suffrage Journal or Mostar (Magazine)?",Women'S Suffrage Journal,Women's Suffrage Journal,1.0,1.0,1.0,1.0
+134,what is the place of birth of Carrie Watson Fleming's husband?,"Fairmont, West Virginia","The user asks: ""what is the place of birth of Carrie Watson Fleming's husband?"" Need",0,0,0,0.0
+135,"which film has the director who died earlier, Mayor Muthanna or The Market Of Souls?",The Market Of Souls,Mayor Muthanna,0,0,0,0.0
+136,"do both films, The Glass Castle (1950 Film) and The Ferret (Film), have the directors who are from the same country?",yes,No,0,0,0,0.0
+137,where was the father of Muhammad Al-Nasir born?,Morocco,"The question is about the father of Muhammad Al-Nasir. According to the passages, Muhammad",0,0,0,0.0
+138,where was the place of death of Enheduanna's father?,Akkadian empire,"The place of death of Enheduanna's father, Sargon of Akkad, is",0,0,0,0.0
+139,"which film whose director was born first, Solemn Promise or Tarzan The Magnificent?",Tarzan The Magnificent,"I have been given a question that asks which film has a director who was born first: """,0,0,0,0.0
+140,"which film has the director who was born later, The Man Is Armed or Wolf Warrior?",Wolf Warrior,Wolf Warrior,1.0,1.0,1.0,1.0
+141,who is the paternal grandfather of Trịnh Doanh?,Trịnh Bính,trinh cuong,0,0,0,0.0
+142,where was the director of film Hellcats Of The Navy born?,Gura Humorului,"The question asks: ""where was the director of film Hellcats Of The Navy born?"" I",0,0,0,0.0
+143,where was the performer of song Feelin' Myself (Nipsey Hussle Song) born?,Crenshaw,"The user is asking about where the performer of the song ""Feelin' Myself"" (by",0,0,0,0.0
+144,"which film whose director is younger, Winter Sleepers or Poveri Milionari?",Winter Sleepers,Winter Sleepers,1.0,1.0,1.0,1.0
+145,who is the paternal grandfather of Bruno Ii Von Berg?,Adolf II of Berg,The passages do not provide information about the paternal grandfather of Bruno II von Berg.,0.3529411764705882,0.23076923076923078,0.75,0.2105263157894737
+146,are The Other Half (2016 Film) and Spy Kids 2: The Island Of Lost Dreams from the same country?,no,No,1.0,1.0,1.0,1.0
+147,where was the director of film 00 Schneider – Jagd Auf Nihil Baxter born?,Mülheim an der Ruhr,"The question asks: ""where was the director of film 00 Schneider – Jagd Auf N",0,0,0,0.0
+148,"which film came out first, Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato or The Bag Man?",Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato,Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi,0.923076923076923,1.0,0.8571428571428571,0.923076923076923
+149,"are the movies The Hatton Garden Job and Carry On Cleo, from the same country?",yes,No,0,0,0,0.0
+150,who is the paternal grandfather of Dibyasambandh?,Mongkut,None,0,0,0,0.0
+151,"who is Charles Willoughby, 10Th Baron Willoughby Of Parham's paternal grandmother?",Lady Frances Manners,Katherine skipwith,0,0,0,0.0
+152,"where does the director of film L'Arbre, Le Maire Et La Médiathèque work at?",Cahiers du cinéma,"The question asks: ""where does the director of film L'Arbre, Le Maire Et La",0,0,0,0.0
+153,where was the director of film Eisenstein In Guanajuato born?,"Newport, Wales","The question asks: ""where was the director of film Eisenstein In Guanajuato born?""
+
+We need",0,0,0,0.0
+154,what is the place of birth of Sextus Barbour's father?,"Gordonsville, Virginia","orange county, virginia",0.4,0.3333333333333333,0.5,0.4
+155,what is the place of birth of the performer of song Ruleta (Inna Song)?,Mangalia,"mangalia, romania",0.6666666666666666,0.5,1.0,0.6666666666666666
+156,who is the father of the director of film A No-Hit No-Run Summer?,Félix Leclerc,"The user's question:
+
+""Who is the father of the director of film A No-Hit No-R",0,0,0,0.0
+157,"who is Henri Ii, Duke Of Nemours's paternal grandfather?",Jacques,None,0,0,0,0.0
+158,who is Gisela Of Hungary's father-in-law?,Géza,"Henry II, Duke of Bavaria",0,0,0,0.0
+159,who is the paternal grandmother of King Kang Of Zhou?,Yi Jiang,queen yi jiang,0.8,0.6666666666666666,1.0,0.8
+160,"what is the date of death of Maria Isabel De Alcântara, Countess Of Iguaçu's mother?","November 3, 1867","The passage does not give a specific date for Maria Isabel De Alcântara, Countess Of Iguaçu",0,0,0,0.0
+161,who is the spouse of the director of film Rodney Steps In?,Ivy Duke,ivy duke,1.0,1.0,1.0,1.0
+162,"when did Frances Vane, Marchioness Of Londonderry's father die?",1 August 1813,1813,0.5,1.0,0.3333333333333333,0.5
+163,"which film has the director who is older than the other, Season Of Strangers or The Yellow Teddy Bears? ?",Season Of Strangers,Season Of Strangers,1.0,1.0,1.0,1.0
+164,were Jake Eisenhart and Michael T. Ullman of the same nationality?,yes,Yes,1.0,1.0,1.0,1.0
+165,"who was born first, Antoine Casavant or Abdul Ali Lalu?",Antoine Casavant,Antoine Casavant,1.0,1.0,1.0,1.0
+166,where did Rameshwari Nehru's husband graduate from?,Oxford,Allahabad University,0,0,0,0.0
+167,"who is the paternal grandfather of Sir John Hamilton-Dalrymple, 5Th Baronet?","Sir Hew Dalrymple, 2nd Baronet","Sir Hew Dalrymple, 3rd Baronet",0.8000000000000002,0.8,0.8,0.8000000000000002
+168,"which film has the director who was born earlier, Khud-Daar or Murderer In The Fog?",Murderer In The Fog,Murderer In The Fog,1.0,1.0,1.0,1.0
+169,who is the spouse of the director of film Soldier (1998 American Film)?,Milla,"The user is asking about the spouse of the director of the film ""Soldier"" (199",0,0,0,0.0
+170,"where did Catherine Of Taranto, Countess Of Copertino's mother die?",Lecce,"The question is asking where Catherine of Taranto, Countess of Copertino's mother died. Let",0,0,0,0.0
+171,which award the director of film Lady Magdalene'S got?,Prometheus Award,"The director of ""Lady Magdalene's"" (J. Neil Schulman) won three film",0,0,0,0.0
+172,what nationality is Princess Charlotte Of Saxe-Meiningen's husband?,Duchy of Saxe-Gotha-Altenburg,German,0,0,0,0.0
+173,"which film has the director who was born first, The Longshots or Station For Two?",Station For Two,The Longshots,0,0,0,0.0
+174,what is the place of birth of Aleksey Greig's father?,Inverkeithing,Inverkeithing,1.0,1.0,1.0,1.0
+175,when did Thomas Of Galloway (Bastard)'s father die?,1234,1234,1.0,1.0,1.0,1.0
+176,"when did Robert Bertie, 3Rd Earl Of Lindsey's father die?",25 July 1666,1666,0.5,1.0,0.3333333333333333,0.5
+177,"which film has the director born later, The Wind'S Fierce or Special Delivery (1927 Film)?",The Wind'S Fierce,"I need to find information about two films:
+1. ""The Wind's Fierce"" 
+",0,0,0,0.47058823529411764
+178,why did the director of film Port Of Seven Seas die?,drowning,"The question is ""why did the director of film Port Of Seven Seas die?"" Based on the",0,0,0,0.0
+179,what is the place of birth of Abdulaziz Nasser Al Shamsi's wife?,Abu Dhabi,I don't know.,0,0,0,0.0
+180,what is the place of birth of Frank Wartenberg's wife?,Prenzlau,East Berlin,0,0,0,0.0
+181,where was the director of film Edges Of The Lord born?,Poznań,"The text does not mention a film titled ""Edges of the Lord"" or provide information about its",0,0,0,0.0
+182,where was the father of Teobaldo Ii Ordelaffi born?,Italy,The passage does not provide information about the birthplace of Teobaldo II Ordelaffi's father,0,0,0,0.0
+183,where was the husband of Maude Smith born?,"Toronto, Ontario",Ellis Island,0,0,0,0.0
+184,"which film was released earlier, Forbidden Daughters or The Third Kiss?",Forbidden Daughters,The Third Kiss,0,0,0,0.0
+185,does Leslie Pietrzyk have the same nationality as Marianne Wiggins?,yes,I don't know,0,0,0,0.0
+186,"who was born first, Bogdan Țăruș or Robert Wulnikowski?",Bogdan Țăruș,Robert Wulnikowski,0,0,0,0.0
+187,"which film has the director who died first, Folgore Division or Sandflow?",Sandflow,None,0,0,0,0.0
+188,"which film has the director born later, From Corleone To Brooklyn or Durango Valley Raiders?",From Corleone To Brooklyn,"I don't have information about either ""From Corleone To Brooklyn"" or ""Durango Valley",0.47058823529411764,0.3076923076923077,1.0,0.4444444444444445
+189,are both Howard Lake (British Columbia) and North Buck Lake (Alberta) located in the same country?,yes,Yes,1.0,1.0,1.0,1.0
+190,where was the place of death of the composer of song Gretchen Am Spinnrade?,Vienna,vienna,1.0,1.0,1.0,1.0
+191,"who was born later, Hugh Evelyn Wortham or Johnny Ekström?",Johnny Ekström,"The question is: ""who was born later, Hugh Evelyn Wortham or Johnny Ekström?""",0.2857142857142857,0.16666666666666666,1.0,0.35294117647058826
+192,"are both mountains, Yana Urqu (Q'Umirqucha) and Puka Rumi, located in the same country?",yes,Yes,1.0,1.0,1.0,1.0
+193,what nationality is Elizabeth Of Rhuddlan's father?,England,English,0,0,0,0.0
+194,"what is the cause of death of director of film I Will, I Will... For Now?",Parkinson,"The question is about the cause of death of the director of the film ""I Will, I",0,0,0,0.0
+195,"who is Maurice De Berkeley, 4Th Baron Berkeley's maternal grandfather?","Roger Mortimer, 1st Earl of March","Roger Mortimer, 1st Earl of March",1.0,1.0,1.0,1.0
+196,"who died first, Albertus Seba or Ali Dinar?",Albertus Seba,"I don't have any information about Albertus Seba in the given passages, so I cannot determine",0.23529411764705882,0.13333333333333333,1.0,0.21052631578947367
+197,"who is the maternal grandfather of Marie Louise, Duchess Of Parma?",Ferdinand I of the Two Sicilies,"The question is asking for the maternal grandfather of Marie Louise, Duchess of Parma.
+
+Looking at the",0.11764705882352941,0.08333333333333333,0.2,0.1739130434782609
+198,"which film was released earlier, Prince Of Arcadia or Italia-Germania 4-3?",Prince Of Arcadia,"I cannot find any mention of ""Italia-Germania 4-3"" in the given passages",0.14285714285714288,0.09090909090909091,0.3333333333333333,0.11764705882352941
+199,where was the director of film Love At First Sight (1985 Film) born?,Milan,"The question asks: ""where was the director of film Love At First Sight (1985 Film",0,0,0,0.0
+200,where did the director of film Nanon (1938 Film) die?,Köln,"The question asks: ""where did the director of film Nanon (1938 Film) die",0,0,0,0.0
+,,,,0.2875588414853121,0.2837848817848818,0.32129761904761905,0.29739714676896667
