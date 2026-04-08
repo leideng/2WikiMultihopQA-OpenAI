@@ -13,13 +13,13 @@ from openai import AsyncOpenAI
 import os
 
 DEFAULT_MODEL_NAME = "kimi-k2.5"
-DEFAULT_EVAL_DATASET_PATH = "data/2wikimqa_200_samples_from_blend.json"
+DEFAULT_EVAL_DATASET_PATH = "data/2wikimqa_200_samples_from_blend_fix.json"
 DEFAULT_MAX_COMPLETION_TOKENS = 20
 DEFAULT_MAX_SAMPLES = 200
 DEFAULT_REQUEST_BATCH_SIZE = 20
 DEFAULT_ENABLE_THINKING = False
 DEFAULT_DEBUG_MODE = False
-DEFAULT_SAVE_RESULTS_PATH_TEMPLATE = "results/{model_name}.csv"
+DEFAULT_SAVE_RESULTS_PATH_TEMPLATE = "results/2wikimqa_200_samples_from_blend_fix/{model_name}.csv"
 
 
 
@@ -95,7 +95,7 @@ def parse_args():
     )
     args = parser.parse_args()
     if args.save_results_path is None:
-        args.save_results_path = f"results/{args.model_name}.csv"
+        args.save_results_path = f"results/2wikimqa_200_samples_from_blend_fix/{args.model_name}.csv"
     return args
 
 
@@ -291,7 +291,21 @@ async def main():
             print(f"Context: {len(ctxs)} chunks with total {len(context)} characters")
 
             #we use longbench's prompt template for 2WikiMQA
-            prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\nQuestion: {question} Answer:"
+            #prompt = f"Answer the question based on the given passages. Only give me the answer and do not output any other words.\nThe following are given passages.\n{context}\nAnswer the question based on the given passages. Only give me the answer and do not output any other words.\nQuestion: {question} Answer:"
+            #print(f"Prompt(short): {prompt[:500]}\n......\n{prompt[-500:]}")
+
+            # Refined prompt template
+            prompt = (
+                f"Answer the question based strictly on the provided passages. "
+                f"If the answer is not present in the context, output exactly 'No answer'. "
+                f"Provide only the answer itself without any surrounding punctuation like periods or commas and any other words. "
+                f"Do not include any introductory or explanatory text.\n\n"
+                f"Passages:\n{context}\n\n"
+                f"Question: {question}\n"
+                f"Answer:"
+            )
+
+            # Printing for verification
             print(f"Prompt(short): {prompt[:500]}\n......\n{prompt[-500:]}")
 
             prompts.append(prompt)
