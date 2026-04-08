@@ -16,8 +16,48 @@ DEFAULT_INPUT_PATH = "data/2wikimqa_200_samples_from_blend.json"
 DEFAULT_OUTPUT_PATH = "data/2wikimqa_200_samples_from_blend_fix.json"
 DEFAULT_FILTERED_OUTPUT_PATH = "data/2wikimqa_200_samples_from_blend_filter.json"
 NO_ANSWER_VALUE = [["No answer"]]
+
 ANSWER_OVERRIDES = {
     1: [["Croatia"]],
+    3: [["Odeon - Theatre de l'Europe"]],
+    6: [["Edward Watson, 2nd Baron Rockingham"]],
+    12: [["Margaret of Flanders"]],
+    13: [["John I, count of soissons"]],
+    28: [["No"]],
+    32: [["Jean Paul Getty"]],
+    40: [["Istanbul"]],
+    48: [["Faustina the Elder"]],
+    69: [["La Belle Américaine"]],  # Added missing quotes
+    71: [["Iranian hospital Dubai"], ["Dubai"]],
+    72: [["France"]],
+    77: [["Egypt"]],
+    89: [["Hawaii"]],
+    94: [["1839"]],
+    96: [["francoise hardy"]], 
+    98: [["Washington, D. C."]],
+    100: [["fernan blazquez de caceres"]],
+    103: [["Denmark"]],
+    105: [["Harby"]],
+    117: [["Methala"]],
+    125: [["Waiting For The Clouds"]],
+    128: [["University of Wisconsin-Madison"]],
+    143: [["Crenshaw"]],
+    145: [["Adolf II of Berg-Hovel"]],
+    150: [["Mongkut"]],
+    154: [["orange county, virginia"]],
+    155: [["Mangalia, Romania"]],
+    157: [["jacques de savoie"]],
+    158: [["Géza, Grand Prince of the Hungarians"]],
+    159: [["Queen Yi Jiang"]],
+    161: [["Ivy Duke and Dorothy Batley"]],
+    166: [["Oxford University"]],
+    171: [["Best Cutting Edge Film"]],
+    172: [["German"]],
+    174: [["Inverkeithing"]],
+    175: [["1234"]],
+    176: [["1666"]],
+    190: [["Vienna"]],
+    193: [["English"]],
 }
 
 
