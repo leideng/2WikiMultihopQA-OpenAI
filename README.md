@@ -1,118 +1,111 @@
 # 2WikiMultihopQA-OpenAI
 
-Evaluate an OpenAI-compatible chat model on the `2WikiMultihopQA` benchmark and save per-sample metrics (`F1`, `Precision`, `Recall`, `ROUGE-L`) to CSV.
+Evaluate OpenAI-compatible chat models on a small `2WikiMultihopQA` slice and save per-sample QA metrics to CSV.
 
-## What this project does
+## Overview
 
-`main.py` loads a JSON evaluation set, builds a prompt from each sample's passages, sends async batched requests to a model endpoint, and computes QA metrics against gold answers.
+`main.py` loads a JSON dataset, builds a prompt from each sample's context passages, sends async batched chat-completion requests, and computes:
 
-By default it evaluates:
+- `F1`
+- `Precision`
+- `Recall`
+- `ROUGE-L`
 
-- Dataset: `data/2wikimqa_200_samples_from_blend.json`
-- Sample count: `200`
-- Model name: `kimi-k2.5`
-- Output file: `results/{model_name}.csv`
+The repository now includes corrected dataset variants:
+
+- `data/2wikimqa_200_samples_from_blend.json`: original 200-sample file
+- `data/2wikimqa_200_samples_from_blend_fix.json`: corrected answers, including explicit overrides such as sample 1 -> `Croatia`
+- `data/2wikimqa_200_samples_from_blend_filter.json`: corrected dataset with all `No answer` samples removed
+
+By default, `main.py` evaluates the filtered dataset and writes results under `results/2wikimqa_200_samples_from_blend_filter/`.
 
 ## Requirements
 
 - Python `>= 3.11`
-- `uv` installed
+- `uv`
 - An OpenAI-compatible API endpoint
 - Environment variables:
   - `OPENAI_API_KEY`
   - `OPENAI_BASE_URL`
 
-## Install
+Install dependencies with:
 
 ```bash
 uv sync
 ```
 
-## Quick start
+## Quick Start
 
-Run with defaults:
+Run the default evaluation:
 
 ```bash
 uv run python main.py
 ```
 
-Run with explicit model and output path:
+Run a small local sanity check without API calls:
+
+```bash
+uv run python main.py --debug-mode --max-samples 5
+```
+
+Evaluate the corrected full dataset instead of the filtered one:
 
 ```bash
 uv run python main.py \
-  --model-name gpt-4.1-mini \
-  --save-results-path results/gpt-4.1-mini.csv
+  --eval-dataset-path data/2wikimqa_200_samples_from_blend_fix.json \
+  --save-results-path results/2wikimqa_200_samples_from_blend_fix/kimi-k2.5.csv
 ```
 
-Run in debug mode (no API calls, returns mock responses):
-
-```bash
-uv run python main.py --debug-mode
-```
-
-Run quick test for API call:
+Smoke-test the endpoint:
 
 ```bash
 uv run python test.py
 ```
 
-## CLI options
+## Dataset Correction Utility
+
+Use `fix_2wikimqa_no_answers.py` to regenerate the corrected datasets:
+
+```bash
+python fix_2wikimqa_no_answers.py
+```
+
+It produces:
+
+- `data/2wikimqa_200_samples_from_blend_fix.json`
+- `data/2wikimqa_200_samples_from_blend_filter.json`
+
+The script applies both bulk `No answer` rewrites and explicit answer overrides.
+
+## CLI Options
+
+Key flags:
 
 ```text
---model-name                Model name for chat completions
---eval-dataset-path         Path to evaluation dataset JSON
---save-results-path         Path to output CSV
---enable-thinking           Enable model thinking mode
---max-completion-tokens     Max completion tokens per request
---max-samples               Number of samples to evaluate
---request-batch-size        Async request batch size / concurrency
---debug-mode                Skip API calls and use mock outputs
+--model-name
+--eval-dataset-path
+--save-results-path
+--enable-thinking
+--max-completion-tokens
+--max-samples
+--request-batch-size
+--debug-mode
 ```
 
-## Full CLI help usage
-```
-usage: main.py [-h] [--model-name MODEL_NAME] [--eval-dataset-path EVAL_DATASET_PATH] [--save-results-path SAVE_RESULTS_PATH] [--enable-thinking] [--max-completion-tokens MAX_COMPLETION_TOKENS] [--max-samples MAX_SAMPLES] [--request-batch-size REQUEST_BATCH_SIZE] [--debug-mode]
+Use `uv run python main.py --help` for the full argparse output.
 
-Evaluate a model on the 2WikiMultihopQA dataset.
+## Output Format
 
-options:
-  -h, --help            show this help message and exit
-  --model-name MODEL_NAME
-                        Model name for chat completions (default: kimi-k2.5).
-  --eval-dataset-path EVAL_DATASET_PATH
-                        Path to the evaluation dataset JSON file (default: data/2wikimqa_200_samples_from_blend.json).
-  --save-results-path SAVE_RESULTS_PATH
-                        Path to output CSV with evaluation results (default: results/{model_name}.csv).
-  --enable-thinking     Whether to enable model thinking mode. Use --enable-thinking to enable (default: False).
-  --max-completion-tokens MAX_COMPLETION_TOKENS
-                        Maximum number of completion tokens per request (default: 20).
-  --max-samples MAX_SAMPLES
-                        Maximum number of samples to evaluate (default: 200).
-  --request-batch-size REQUEST_BATCH_SIZE
-                        Concurrent request batch size for async inference (default: 20).
-  --debug-mode          Run without API requests by returning mock responses. Use --debug-mode to enable (default: False).
-```
-
-## Output
-
-The CSV file contains one row per sample:
+Each CSV contains one row per evaluated sample:
 
 `index, question, gold, response, f1, precision, recall, rl`
 
-At the end, one summary row is appended with average metrics in the last four columns.
+A final summary row appends dataset averages in the last four columns.
 
-## First data point walkthrough
+## Repository Layout
 
-From `data/2wikimqa_200_samples_from_blend.json`, the first sample asks:
-
-- **Question:** `Where was the wife of Francis I Rákóczi born?`
-- **Gold answer:** `Ozalj`
-- **Passages:** 10 context chunks (`ctxs`)
-
-Why the answer is `Ozalj`:
-
-- The sample contains passages about Francis I Rákóczi and his wife (`Jelena Zrinska` / `Ilona Zrinyi`).
-- `Jelena Zrinska` is a Croatian countess from Ozalj (historically connected to the Zrinski family).
-- Therefore, the expected short answer is `Ozalj`.
-
-This is a good example of multi-hop QA: the model must connect entity mentions across biography-style passages and return only the final location.
+- `main.py`: evaluation entry point
+- `fix_2wikimqa_no_answers.py`: dataset correction script
+- `test.py`, `test-qwen3-8b.py`: endpoint smoke tests
+- `data/`: source and corrected JSON datasets
+- `results/`: CSV outputs grouped by dataset variant
