@@ -15,11 +15,14 @@ NO_ANSWER_INDICES = [
 DEFAULT_INPUT_PATH = "data/2wikimqa_200_samples_from_blend.json"
 DEFAULT_OUTPUT_PATH = "data/2wikimqa_200_samples_from_blend_fix.json"
 NO_ANSWER_VALUE = [["No answer"]]
+ANSWER_OVERRIDES = {
+    1: [["Croatia"]],
+}
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Rewrite selected 2WikiMultihopQA samples to use 'No answer'."
+        description="Apply answer corrections to the 2WikiMultihopQA sample set."
     )
     parser.add_argument(
         "--input-path",
@@ -49,13 +52,18 @@ def main():
     for sample_index in NO_ANSWER_INDICES:
         data[sample_index - 1]["answers"] = NO_ANSWER_VALUE
 
+    for sample_index, replacement_answer in ANSWER_OVERRIDES.items():
+        data[sample_index - 1]["answers"] = replacement_answer
+
     output_path.write_text(
         json.dumps(data, ensure_ascii=False, indent=4) + "\n",
         encoding="utf-8",
     )
 
     print(
-        f"Wrote {output_path} with {len(NO_ANSWER_INDICES)} samples set to {NO_ANSWER_VALUE[0][0]!r}."
+        "Wrote "
+        f"{output_path} with {len(NO_ANSWER_INDICES)} 'No answer' rewrites "
+        f"and {len(ANSWER_OVERRIDES)} explicit answer overrides."
     )
 
 
