@@ -195,7 +195,8 @@ async def get_response_async(client, prompt, model_name, enable_thinking, max_co
     }
     if not enable_thinking:
         #request_kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}  # for vllm
-        request_kwargs["extra_body"] = {"thinking": {"type": "disabled"}} # for arkcodeplan
+        #request_kwargs["extra_body"] = {"thinking": {"type": "disabled"}} # for arkcodeplan
+        request_kwargs["extra_body"] = {"reasoning_effort": "none"} # for gpt and claude
 
     completion = await client.chat.completions.create(**request_kwargs)
 
