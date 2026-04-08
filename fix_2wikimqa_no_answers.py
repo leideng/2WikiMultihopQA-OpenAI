@@ -14,6 +14,7 @@ NO_ANSWER_INDICES = [
 
 DEFAULT_INPUT_PATH = "data/2wikimqa_200_samples_from_blend.json"
 DEFAULT_OUTPUT_PATH = "data/2wikimqa_200_samples_from_blend_fix.json"
+DEFAULT_FILTERED_OUTPUT_PATH = "data/2wikimqa_200_samples_from_blend_filter.json"
 NO_ANSWER_VALUE = [["No answer"]]
 ANSWER_OVERRIDES = {
     1: [["Croatia"]],
@@ -34,6 +35,14 @@ def parse_args():
         default=DEFAULT_OUTPUT_PATH,
         help=f"Fixed dataset path (default: {DEFAULT_OUTPUT_PATH}).",
     )
+    parser.add_argument(
+        "--filtered-output-path",
+        default=DEFAULT_FILTERED_OUTPUT_PATH,
+        help=(
+            "Filtered dataset path with all 'No answer' samples removed "
+            f"(default: {DEFAULT_FILTERED_OUTPUT_PATH})."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -41,6 +50,7 @@ def main():
     args = parse_args()
     input_path = Path(args.input_path)
     output_path = Path(args.output_path)
+    filtered_output_path = Path(args.filtered_output_path)
 
     data = json.loads(input_path.read_text(encoding="utf-8"))
 
@@ -60,10 +70,21 @@ def main():
         encoding="utf-8",
     )
 
+    filtered_data = [
+        sample for sample in data if sample.get("answers") != NO_ANSWER_VALUE
+    ]
+    filtered_output_path.write_text(
+        json.dumps(filtered_data, ensure_ascii=False, indent=4) + "\n",
+        encoding="utf-8",
+    )
+
     print(
         "Wrote "
         f"{output_path} with {len(NO_ANSWER_INDICES)} 'No answer' rewrites "
         f"and {len(ANSWER_OVERRIDES)} explicit answer overrides."
+    )
+    print(
+        f"Wrote {filtered_output_path} with {len(filtered_data)} samples after filtering."
     )
 
 
