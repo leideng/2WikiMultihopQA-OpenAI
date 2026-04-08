@@ -152,14 +152,17 @@ def compute_f1(pred, gold):
         print(f"WARNING: gold is None or empty for response: {gold}")
         return 0, 0, 0
 
-    pred = parse_generation(pred)
+    #no need to parse the generation
+    #pred = parse_generation(pred)
+    
     normalized_prediction = normalize_answer(pred)
     normalized_ground_truth = normalize_answer(gold)
 
-    if normalized_prediction in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
-        return 0, 0, 0
-    if normalized_ground_truth in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
-        return 0, 0, 0
+    #no need to check if the prediction is yes, no, or noanswer
+    #if normalized_prediction in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
+    #    return 0, 0, 0
+    #if normalized_ground_truth in ['yes', 'no', 'noanswer'] and normalized_prediction != normalized_ground_truth:
+    #    return 0, 0, 0
 
     #here each word is a token
     #I do not think we should involve an external LLM tokenizer to compute the F1 score
