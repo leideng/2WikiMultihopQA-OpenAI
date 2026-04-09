@@ -1,10 +1,6 @@
 # Filtered 102 / claude-opus-4.6
 
-Source file:
-
-```text
-results/2wikimqa_200_samples_from_blend_filter/claude-opus-4.6.csv
-```
+See [source file](https://github.com/leideng/2WikiMultihopQA-OpenAI/blob/main/results/2wikimqa_200_samples_from_blend_filter/claude-opus-4.6.csv).
 
 Full results (102 sample rows plus final summary row):
 

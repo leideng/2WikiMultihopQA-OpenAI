@@ -1,5 +1,7 @@
 # CacheBlend Issue Notes
 
+See my issue [here](https://github.com/YaoJiayi/CacheBlend/issues/30).
+
 This page documents the rationale behind the issue submitted to the CacheBlend repository about the published `2WikiMultihopQA` sample file and the evaluation workflow around it.
 
 ## Background

@@ -1,10 +1,7 @@
 # Filtered 102 / gpt-5.4
 
-Source file:
+See [source file](https://github.com/leideng/2WikiMultihopQA-OpenAI/blob/main/results/2wikimqa_200_samples_from_blend_filter/gpt-5.4.csv).
 
-```text
-results/2wikimqa_200_samples_from_blend_filter/gpt-5.4.csv
-```
 
 Full results (102 sample rows plus final summary row):
 

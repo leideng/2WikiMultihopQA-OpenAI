@@ -1,10 +1,7 @@
 # Original 200 / doubao-seed-2.0-pro
 
-Source file:
+See [source file](https://github.com/leideng/2WikiMultihopQA-OpenAI/blob/main/results/2wikimqa_200_samples_from_blend/doubao-seed-2.0-pro.csv).
 
-```text
-results/2wikimqa_200_samples_from_blend/doubao-seed-2.0-pro.csv
-```
 
 Full results (200 sample rows plus final summary row):
 
