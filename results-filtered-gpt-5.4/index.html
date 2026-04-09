@@ -1,0 +1,1776 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for evaluating OpenAI-compatible chat models on a 2WikiMultihopQA benchmark slice.">
+      
+      
+      
+      
+        <link rel="prev" href="../results-filtered-doubao/">
+      
+      
+        <link rel="next" href="../results-filtered-claude-opus-4.6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Filtered 102 / gpt-5.4 - 2WikiMultihopQA-OpenAI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#filtered-102-gpt-54" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="2WikiMultihopQA-OpenAI" class="md-header__button md-logo" aria-label="2WikiMultihopQA-OpenAI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2WikiMultihopQA-OpenAI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Filtered 102 / gpt-5.4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/leideng/2WikiMultihopQA-OpenAI" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2WikiMultihopQA-OpenAI
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="2WikiMultihopQA-OpenAI" class="md-nav__button md-logo" aria-label="2WikiMultihopQA-OpenAI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    2WikiMultihopQA-OpenAI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/leideng/2WikiMultihopQA-OpenAI" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    2WikiMultihopQA-OpenAI
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evaluation Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cacheblend-issue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CacheBlend Issue Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Full Results
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Full Results
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results-original-doubao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Original 200 / doubao-seed-2.0-pro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results-fixed-doubao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fixed 200 / doubao-seed-2.0-pro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results-filtered-doubao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtered 102 / doubao-seed-2.0-pro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtered 102 / gpt-5.4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../results-filtered-claude-opus-4.6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Filtered 102 / claude-opus-4.6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../smoke-tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smoke Tests
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="filtered-102-gpt-54">Filtered 102 / gpt-5.4<a class="headerlink" href="#filtered-102-gpt-54" title="Permanent link">&para;</a></h1>
+<p>Source file:</p>
+<pre><code class="language-text">results/2wikimqa_200_samples_from_blend_filter/gpt-5.4.csv
+</code></pre>
+<p>Full results (102 sample rows plus final summary row):</p>
+<table>
+<thead>
+<tr>
+<th>index</th>
+<th>question</th>
+<th>gold</th>
+<th>response</th>
+<th>f1</th>
+<th>precision</th>
+<th>recall</th>
+<th>rl</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>where was the wife of Francis I Rákóczi born?</td>
+<td>Croatia</td>
+<td>croatia</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>who is Sobe (Sister Of Saint Anne)'s grandchild?</td>
+<td>John the Baptist</td>
+<td>mary the mother of christ</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>3</td>
+<td>where does the director of film Man At Bath work at?</td>
+<td>Odeon - Theatre de l'Europe</td>
+<td>theatre de lorient</td>
+<td>0.5714285714285715</td>
+<td>0.6666666666666666</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>what is the date of birth of William Paulet, 3Rd Marquess Of Winchester's father?</td>
+<td>1510</td>
+<td>c. 1510</td>
+<td>0.6666666666666666</td>
+<td>0.5</td>
+<td>1.0</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>5</td>
+<td>who is Edward Watson, Viscount Sondes's paternal grandfather?</td>
+<td>Edward Watson, 2nd Baron Rockingham</td>
+<td>Lewis Watson, 1st Earl of Rockingham</td>
+<td>0.3636363636363636</td>
+<td>0.3333333333333333</td>
+<td>0.4</td>
+<td>0.3636363636363636</td>
+</tr>
+<tr>
+<td>6</td>
+<td>what is the date of death of Humphrey De Bohun, 7Th Earl Of Hereford's father?</td>
+<td>16 September 1360</td>
+<td>16 september 1360</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>who is Helmichis's father-in-law?</td>
+<td>Cunimund</td>
+<td>Cunimund</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>where does the director of film Wine Of Morning work at?</td>
+<td>Bob Jones University</td>
+<td>bob jones university</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>who is the paternal grandmother of Marie Of Brabant, Queen Of France?</td>
+<td>Margaret of Flanders</td>
+<td>beatrice d'avesnes</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>who is Renaud Ii, Count Of Soissons's uncle?</td>
+<td>John I, count of soissons</td>
+<td>john i, count of soissons</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>when did William Le Poer Trench's father die?</td>
+<td>26 April 1872</td>
+<td>26 april 1872</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>which film came out earlier, Indradhanura Chhai or The Death Of Black King?</td>
+<td>The Death Of Black King</td>
+<td>The Death Of Black King</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>13</td>
+<td>are both villages, Rhosgoch and Qaleh-Ye Sahar, located in the same country?</td>
+<td>no</td>
+<td>no</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>14</td>
+<td>which film has the director who was born first, Hell Up In Harlem or The Soviet Story?</td>
+<td>Hell Up In Harlem</td>
+<td>Hell Up In Harlem</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>who was born first, Cipriano Castro or Damir Nikšić?</td>
+<td>Cipriano Castro</td>
+<td>Cipriano Castro</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>16</td>
+<td>which film has the director who died first, The Year Of The Rabbit or Monster On The Campus?</td>
+<td>Monster On The Campus</td>
+<td>Monster On The Campus</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>17</td>
+<td>who is younger, Guy Arvely Dolsin or Altuğ Çelikbilek?</td>
+<td>Altuğ Çelikbilek</td>
+<td>Altuğ Çelikbilek</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>which song came out first, Joel The Lump Of Coal or Jugband Blues?</td>
+<td>Jugband Blues</td>
+<td>Jugband Blues</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>19</td>
+<td>are both Open Mobile and Primestar located in the same country?</td>
+<td>No</td>
+<td>no</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>20</td>
+<td>who is Archibald Acheson, 4Th Earl Of Gosford's paternal grandfather?</td>
+<td>Archibald Acheson, 2nd Earl of Gosford</td>
+<td>Archibald Acheson, 2nd Earl of Gosford</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>21</td>
+<td>who is the paternal grandfather of Mark Getty?</td>
+<td>Jean Paul Getty</td>
+<td>J. Paul Getty</td>
+<td>0.6666666666666666</td>
+<td>0.6666666666666666</td>
+<td>0.6666666666666666</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>22</td>
+<td>where did the performer of song Fantasy (George Michael Song) die?</td>
+<td>Goring-on-Thames, Oxfordshire</td>
+<td>his home in goring - on - thames, oxfordshire</td>
+<td>0.22222222222222224</td>
+<td>0.14285714285714285</td>
+<td>0.5</td>
+<td>0.7272727272727273</td>
+</tr>
+<tr>
+<td>23</td>
+<td>which film whose director was born first, The Abduction Club or Wooden Crosses?</td>
+<td>Wooden Crosses</td>
+<td>Wooden Crosses</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>24</td>
+<td>which film came out earlier, Above Rubies or The Magic Aster?</td>
+<td>Above Rubies</td>
+<td>Above Rubies</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>25</td>
+<td>what is the place of birth of the director of film Clowning Around?</td>
+<td>Castlemaine, Victoria, Australia</td>
+<td>castlemaine, victoria, australia</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>26</td>
+<td>where was the place of death of Kamures Kadın's husband?</td>
+<td>Istanbul</td>
+<td>istanbul</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>27</td>
+<td>which film has the director who died first, Tex And The Lord Of The Deep or Henry Goes Arizona?</td>
+<td>Henry Goes Arizona</td>
+<td>Henry Goes Arizona</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>28</td>
+<td>which country the performer of song I Believe In Your Sweet Love is from?</td>
+<td>United Kingdom</td>
+<td>wales</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>29</td>
+<td>who is Marcus Annius Libo's aunt?</td>
+<td>Faustina the Elder</td>
+<td>faustina the elder</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>30</td>
+<td>which film was released more recently, Bajo Otro Sol or Riding The California Trail?</td>
+<td>Bajo Otro Sol</td>
+<td>Bajo Otro Sol</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>31</td>
+<td>when is Henrietta Maria Of Brandenburg-Schwedt's father's birthday?</td>
+<td>May 19, 1669</td>
+<td>19 may 1669</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>32</td>
+<td>which film was released more recently, Dance With A Stranger or Miley Naa Miley Hum?</td>
+<td>Miley Naa Miley Hum</td>
+<td>Miley Naa Miley Hum</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>33</td>
+<td>which film was released first, Vacations In Majorca or Dr. Socrates?</td>
+<td>Dr. Socrates</td>
+<td>Dr. Socrates</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>34</td>
+<td>who is younger, Peter Rosegger or Ruel Redinger?</td>
+<td>Ruel Redinger</td>
+<td>Ruel Redinger</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>35</td>
+<td>who is the spouse of the performer of song This Time (Waylon Jennings Song)?</td>
+<td>Jessi Colter</td>
+<td>Barbara Elizabeth Rood</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>36</td>
+<td>are Twin Cairns Island and Nova Zembla Island located in the same country?</td>
+<td>yes</td>
+<td>yes</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>37</td>
+<td>who died first, Erich Haenisch or William Pooley?</td>
+<td>William Pooley</td>
+<td>William Pooley</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>38</td>
+<td>which film has the director who died later, The Great Man'S Lady or La Belle Américaine?</td>
+<td>La Belle Américaine</td>
+<td>La Belle Américaine</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>39</td>
+<td>where was the place of death of Shahnawaz Bhutto's mother?</td>
+<td>Iranian hospital Dubai</td>
+<td>iranian hospital dubai</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>40</td>
+<td>where was the performer of song Égérie (Song) born?</td>
+<td>France</td>
+<td>San Leandro, California</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>41</td>
+<td>who is the father-in-law of Duke William Of Mecklenburg-Schwerin?</td>
+<td>Prince Albert of Prussia</td>
+<td>Prince Albert of Prussia</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>42</td>
+<td>who is Sir William Gore, 3Rd Baronet's paternal grandfather?</td>
+<td>Sir Paul Gore, 1st Baronet</td>
+<td>sir paul gore, 1st baronet</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>43</td>
+<td>which country Nizar Al-Mustafa's father is from?</td>
+<td>Egypt</td>
+<td>egypt</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>44</td>
+<td>which film came out earlier, The Drover'S Sweetheart or Pigsty (Film)?</td>
+<td>The Drover'S Sweetheart</td>
+<td>The Drover's Sweetheart</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>45</td>
+<td>which film came out earlier, Closely Watched Trains or Det Sande Ansigt?</td>
+<td>Det Sande Ansigt</td>
+<td>Det Sande Ansigt</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>46</td>
+<td>are both directors of films La Morte Vivante and Stranger On Horseback from the same country?</td>
+<td>yes</td>
+<td>yes</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>47</td>
+<td>which country Keōpūolani's husband is from?</td>
+<td>Hawaii</td>
+<td>Hawaii</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>48</td>
+<td>which film came out earlier, X-Paroni or Mi Novia Está De Madre?</td>
+<td>X-Paroni</td>
+<td>X-Paroni</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>49</td>
+<td>which film was released earlier, August Underground'S Penance or Vasantha Raagam?</td>
+<td>Vasantha Raagam</td>
+<td>Vasantha Raagam</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>50</td>
+<td>who is the father-in-law of Hong Ra-Hee?</td>
+<td>Lee Byung-chul</td>
+<td>Hong Jin-ki</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>51</td>
+<td>who is Isabella Of Bourbon's paternal grandfather?</td>
+<td>John I, Duke of Bourbon</td>
+<td>charles i, duke of bourbon</td>
+<td>0.8000000000000002</td>
+<td>0.8</td>
+<td>0.8</td>
+<td>0.8000000000000002</td>
+</tr>
+<tr>
+<td>52</td>
+<td>what is the date of death of Duleep Singh's father?</td>
+<td>1839</td>
+<td>27 june 1839</td>
+<td>0.5</td>
+<td>0.3333333333333333</td>
+<td>1.0</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>53</td>
+<td>who is the spouse of the performer of song Et Moi, Et Moi, Et Moi?</td>
+<td>francoise hardy</td>
+<td>francoise hardy</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>54</td>
+<td>who lived longer, Charles Wheatstone or Jean-Claude Lauzon?</td>
+<td>Charles Wheatstone</td>
+<td>Charles Wheatstone</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>55</td>
+<td>where was the place of death of Thomas E. Noell's father?</td>
+<td>Washington, D. C.</td>
+<td>Washington, D. C.</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>56</td>
+<td>who is the paternal grandfather of Diego Fernández De Oviedo?</td>
+<td>fernan blazquez de caceres</td>
+<td>Fernando Fernández de Ovando, 1st Count of Torrelaguna and</td>
+<td>0.15384615384615383</td>
+<td>0.1111111111111111</td>
+<td>0.25</td>
+<td>0.14285714285714288</td>
+</tr>
+<tr>
+<td>57</td>
+<td>which country Dorothea Of Denmark, Duchess Of Mecklenburg's father is from?</td>
+<td>Denmark</td>
+<td>denmark</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>58</td>
+<td>where did Mary Of Woodstock's mother die?</td>
+<td>Harby</td>
+<td>in the house of Richard de Weston near Harby, Nottinghamshire</td>
+<td>0.19999999999999998</td>
+<td>0.1111111111111111</td>
+<td>1.0</td>
+<td>0.18181818181818182</td>
+</tr>
+<tr>
+<td>59</td>
+<td>which film was released earlier, Moment Of Danger or The Ballad Of Josie?</td>
+<td>Moment Of Danger</td>
+<td>Moment Of Danger</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>60</td>
+<td>which film has the director who died first, The Piper'S Price or The Blonde From Singapore?</td>
+<td>The Piper'S Price</td>
+<td>The Blonde From Singapore</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>61</td>
+<td>what is the place of birth of the director of film Ninamaninja Kalpadukal?</td>
+<td>Methala</td>
+<td>methala, near perumbavoor in kerala</td>
+<td>0.33333333333333337</td>
+<td>0.2</td>
+<td>1.0</td>
+<td>0.33333333333333337</td>
+</tr>
+<tr>
+<td>62</td>
+<td>which film came out earlier, Alkohol or Night Of Dark Shadows?</td>
+<td>Alkohol</td>
+<td>Alkohol</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>63</td>
+<td>which film whose director is younger, Many Tanks Mr. Atkins or Do Musafir?</td>
+<td>Do Musafir</td>
+<td>Do Musafir</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>64</td>
+<td>which film came out first, F The Prom or The Comedians Of Comedy?</td>
+<td>The Comedians Of Comedy</td>
+<td>The Comedians Of Comedy</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>65</td>
+<td>which film has the director who was born first, Tombstone Rashomon or Waiting For The Clouds?</td>
+<td>Waiting For The Clouds</td>
+<td>Tombstone Rashomon</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>66</td>
+<td>which film has the director who was born first, Perdón, Viejita or Smokey And The Bandit?</td>
+<td>Perdón, Viejita</td>
+<td>Perdón, Viejita</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>67</td>
+<td>where did the director of film American Gothic (2007 Film) graduate from?</td>
+<td>University of Wisconsin-Madison</td>
+<td>the University of Wisconsin-Madison</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>0.888888888888889</td>
+</tr>
+<tr>
+<td>68</td>
+<td>which magazine was established first, Women'S Suffrage Journal or Mostar (Magazine)?</td>
+<td>Women'S Suffrage Journal</td>
+<td>Women's Suffrage Journal</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>69</td>
+<td>which film has the director who died earlier, Mayor Muthanna or The Market Of Souls?</td>
+<td>The Market Of Souls</td>
+<td>The Market Of Souls</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>70</td>
+<td>do both films, The Glass Castle (1950 Film) and The Ferret (Film), have the directors who are from the same country?</td>
+<td>yes</td>
+<td>yes</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>71</td>
+<td>which film has the director who was born later, The Man Is Armed or Wolf Warrior?</td>
+<td>Wolf Warrior</td>
+<td>Wolf Warrior</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>72</td>
+<td>where was the performer of song Feelin' Myself (Nipsey Hussle Song) born?</td>
+<td>Crenshaw</td>
+<td>the crenshaw district of south central los angeles</td>
+<td>0.25</td>
+<td>0.14285714285714285</td>
+<td>1.0</td>
+<td>0.2222222222222222</td>
+</tr>
+<tr>
+<td>73</td>
+<td>which film whose director is younger, Winter Sleepers or Poveri Milionari?</td>
+<td>Winter Sleepers</td>
+<td>Winter Sleepers</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>74</td>
+<td>who is the paternal grandfather of Bruno Ii Von Berg?</td>
+<td>Adolf II of Berg-Hovel</td>
+<td>Adolf III, Count of Berg</td>
+<td>0.4444444444444445</td>
+<td>0.4</td>
+<td>0.5</td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>75</td>
+<td>are The Other Half (2016 Film) and Spy Kids 2: The Island Of Lost Dreams from the same country?</td>
+<td>no</td>
+<td>no</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>76</td>
+<td>which film came out first, Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato or The Bag Man?</td>
+<td>Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato</td>
+<td>Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi</td>
+<td>0.923076923076923</td>
+<td>1.0</td>
+<td>0.8571428571428571</td>
+<td>0.923076923076923</td>
+</tr>
+<tr>
+<td>77</td>
+<td>who is the paternal grandfather of Dibyasambandh?</td>
+<td>Mongkut</td>
+<td>bhanurangsi savangwongse</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>78</td>
+<td>who is Charles Willoughby, 10Th Baron Willoughby Of Parham's paternal grandmother?</td>
+<td>Lady Frances Manners</td>
+<td>anne carey</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>79</td>
+<td>what is the place of birth of Sextus Barbour's father?</td>
+<td>orange county, virginia</td>
+<td>orange county, virginia</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>80</td>
+<td>what is the place of birth of the performer of song Ruleta (Inna Song)?</td>
+<td>Mangalia, Romania</td>
+<td>mangalia, romania</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>81</td>
+<td>who is Henri Ii, Duke Of Nemours's paternal grandfather?</td>
+<td>jacques de savoie</td>
+<td>henri de savoie, 4th duc de nemours</td>
+<td>0.4</td>
+<td>0.2857142857142857</td>
+<td>0.6666666666666666</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>82</td>
+<td>who is Gisela Of Hungary's father-in-law?</td>
+<td>Géza, Grand Prince of the Hungarians</td>
+<td>geza</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>83</td>
+<td>who is the paternal grandmother of King Kang Of Zhou?</td>
+<td>Queen Yi Jiang</td>
+<td>queen yi jiang</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>84</td>
+<td>who is the spouse of the director of film Rodney Steps In?</td>
+<td>Ivy Duke and Dorothy Batley</td>
+<td>dorothy batley</td>
+<td>0.5714285714285715</td>
+<td>1.0</td>
+<td>0.4</td>
+<td>0.5714285714285715</td>
+</tr>
+<tr>
+<td>85</td>
+<td>when did Frances Vane, Marchioness Of Londonderry's father die?</td>
+<td>1 August 1813</td>
+<td>1 august 1813</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>86</td>
+<td>were Jake Eisenhart and Michael T. Ullman of the same nationality?</td>
+<td>yes</td>
+<td>yes</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>87</td>
+<td>who was born first, Antoine Casavant or Abdul Ali Lalu?</td>
+<td>Antoine Casavant</td>
+<td>Antoine Casavant</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>88</td>
+<td>where did Rameshwari Nehru's husband graduate from?</td>
+<td>Oxford University</td>
+<td>oxford university</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>89</td>
+<td>who is the paternal grandfather of Sir John Hamilton-Dalrymple, 5Th Baronet?</td>
+<td>Sir Hew Dalrymple, 2nd Baronet</td>
+<td>Sir Hew Dalrymple, 2nd Baronet</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>90</td>
+<td>where did Catherine Of Taranto, Countess Of Copertino's mother die?</td>
+<td>Lecce</td>
+<td>lecce</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>91</td>
+<td>which award the director of film Lady Magdalene'S got?</td>
+<td>Best Cutting Edge Film</td>
+<td>special jury prize for libertarian ideals</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>92</td>
+<td>what nationality is Princess Charlotte Of Saxe-Meiningen's husband?</td>
+<td>German</td>
+<td>german</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>93</td>
+<td>what is the place of birth of Aleksey Greig's father?</td>
+<td>Inverkeithing</td>
+<td>Inverkeithing, Fife, Scotland</td>
+<td>0.5</td>
+<td>0.3333333333333333</td>
+<td>1.0</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>94</td>
+<td>when did Thomas Of Galloway (Bastard)'s father die?</td>
+<td>1234</td>
+<td>1234</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>95</td>
+<td>when did Robert Bertie, 3Rd Earl Of Lindsey's father die?</td>
+<td>1666</td>
+<td>1666</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>96</td>
+<td>does Leslie Pietrzyk have the same nationality as Marianne Wiggins?</td>
+<td>yes</td>
+<td>yes</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>97</td>
+<td>are both Howard Lake (British Columbia) and North Buck Lake (Alberta) located in the same country?</td>
+<td>yes</td>
+<td>yes</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>98</td>
+<td>where was the place of death of the composer of song Gretchen Am Spinnrade?</td>
+<td>Vienna</td>
+<td>vienna</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>99</td>
+<td>who was born later, Hugh Evelyn Wortham or Johnny Ekström?</td>
+<td>Johnny Ekström</td>
+<td>Johnny Ekström</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>100</td>
+<td>are both mountains, Yana Urqu (Q'Umirqucha) and Puka Rumi, located in the same country?</td>
+<td>yes</td>
+<td>yes</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>101</td>
+<td>what nationality is Elizabeth Of Rhuddlan's father?</td>
+<td>English</td>
+<td>English</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>102</td>
+<td>who is Maurice De Berkeley, 4Th Baron Berkeley's maternal grandfather?</td>
+<td>Roger Mortimer, 1st Earl of March</td>
+<td>thomas de berkeley, 3rd baron berkeley</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.7898700972230384</td>
+<td>0.7845782757547464</td>
+<td>0.828828197945845</td>
+<td>0.7956326897503367</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.sections", "navigation.top", "content.code.copy", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
