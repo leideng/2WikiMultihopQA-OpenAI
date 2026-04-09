@@ -14,7 +14,7 @@
         <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="../datasets/">
+        <link rel="next" href="../prompts/">
       
       
         
@@ -423,6 +423,33 @@
   
   
     <li class="md-nav__item">
+      <a href="../prompts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suggested Prompts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../datasets/" class="md-nav__link">
         
   
@@ -517,10 +544,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
             
   
   
@@ -538,8 +565,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -856,6 +883,12 @@ Do not add trailing punctuation.
 For yes/no questions, return exactly 'yes' or 'no'.
 </code></pre>
 <p>This keeps outputs short and aligned with extractive QA-style scoring.</p>
+<p>The repository now documents two recommended prompt variants:</p>
+<ul>
+<li>the LongBench-style short-answer prompt for the original and fixed 200-row datasets</li>
+<li>the stricter <code>No answer</code> prompt for the filtered dataset</li>
+</ul>
+<p>See <a href="../prompts/">Suggested Prompts</a> for the full templates and the recommended mapping.</p>
 <h2 id="main-cli-flags">Main CLI Flags<a class="headerlink" href="#main-cli-flags" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
