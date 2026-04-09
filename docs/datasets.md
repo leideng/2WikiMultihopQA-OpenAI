@@ -12,6 +12,12 @@ The repository contains three benchmark variants under `data/`:
 
 The default evaluator path points to the filtered corrected dataset.
 
+## Why Corrected Variants Exist
+
+The original 200-sample file copied from the CacheBlend benchmark was audited against its provided context passages. That review found both incorrect gold answers and rows that are not answerable from the supplied context.
+
+This repository keeps the original file for traceability, but it treats the corrected derivatives as the preferred benchmark inputs. The detailed rationale, examples, correction lists, and metric impact are documented in [CacheBlend Issue Notes](cacheblend-issue.md).
+
 ## Correction Utility
 
 Use `fix_2wikimqa_no_answers.py` to regenerate the corrected files:

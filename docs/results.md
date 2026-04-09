@@ -48,3 +48,15 @@ Treat files under `results/` as generated outputs. Keep them only when they repr
 - Record the dataset variant alongside the model name.
 - Keep the exact CLI command used for a run.
 - If you change prompts or scoring logic, write results to a new file instead of overwriting older benchmark baselines blindly.
+
+## Full Published Result Pages
+
+This documentation site also includes verbatim copies of the key benchmark CSVs so readers can inspect every row directly in the docs:
+
+- [Original 200 / doubao-seed-2.0-pro](results-original-doubao.md)
+- [Fixed 200 / doubao-seed-2.0-pro](results-fixed-doubao.md)
+- [Filtered 102 / doubao-seed-2.0-pro](results-filtered-doubao.md)
+- [Filtered 102 / gpt-5.4](results-filtered-gpt-5.4.md)
+- [Filtered 102 / claude-opus-4.6](results-filtered-claude-opus-4.6.md)
+
+Each page reproduces the corresponding CSV content in full.

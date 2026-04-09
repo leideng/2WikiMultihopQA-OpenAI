@@ -25,4 +25,12 @@ nav:
   - Getting Started: getting-started.md
   - Evaluation Pipeline: evaluation.md
   - Datasets: datasets.md
+  - CacheBlend Issue Notes: cacheblend-issue.md
   - Results: results.md
+  - Full Results:
+      - Original 200 / doubao-seed-2.0-pro: results-original-doubao.md
+      - Fixed 200 / doubao-seed-2.0-pro: results-fixed-doubao.md
+      - Filtered 102 / doubao-seed-2.0-pro: results-filtered-doubao.md
+      - Filtered 102 / gpt-5.4: results-filtered-gpt-5.4.md
+      - Filtered 102 / claude-opus-4.6: results-filtered-claude-opus-4.6.md
+  - Smoke Tests: smoke-tests.md

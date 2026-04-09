@@ -76,3 +76,14 @@ extra_body = {"reasoning_effort": "none"}
 ```
 
 This matches the repository's current target behavior for GPT- and Claude-style OpenAI-compatible backends. If a provider expects a different extension field, update `main.py` accordingly.
+
+## Why the Backend Is Decoupled
+
+One of the motivations for this repository is to separate benchmark logic from a project-specific offline inference stack. For accuracy evaluation, that separation makes runs easier to reproduce and compare across providers and serving systems.
+
+The evaluator therefore standardizes on:
+
+- `OPENAI_API_KEY`
+- `OPENAI_BASE_URL`
+
+This lets the same benchmark code run against hosted APIs or self-hosted OpenAI-compatible services without changing the evaluator internals. The broader argument for this interface is summarized in [CacheBlend Issue Notes](cacheblend-issue.md).

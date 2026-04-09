@@ -1,0 +1,115 @@
+# Filtered 102 / gpt-5.4
+
+Source file:
+
+```text
+results/2wikimqa_200_samples_from_blend_filter/gpt-5.4.csv
+```
+
+Full results (102 sample rows plus final summary row):
+
+| index | question | gold | response | f1 | precision | recall | rl |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | where was the wife of Francis I Rákóczi born? | Croatia | croatia | 1.0 | 1.0 | 1.0 | 1.0 |
+| 2 | who is Sobe (Sister Of Saint Anne)'s grandchild? | John the Baptist | mary the mother of christ | 0 | 0 | 0 | 0.25 |
+| 3 | where does the director of film Man At Bath work at? | Odeon - Theatre de l'Europe | theatre de lorient | 0.5714285714285715 | 0.6666666666666666 | 0.5 | 0.5 |
+| 4 | what is the date of birth of William Paulet, 3Rd Marquess Of Winchester's father? | 1510 | c. 1510 | 0.6666666666666666 | 0.5 | 1.0 | 0.6666666666666666 |
+| 5 | who is Edward Watson, Viscount Sondes's paternal grandfather? | Edward Watson, 2nd Baron Rockingham | Lewis Watson, 1st Earl of Rockingham | 0.3636363636363636 | 0.3333333333333333 | 0.4 | 0.3636363636363636 |
+| 6 | what is the date of death of Humphrey De Bohun, 7Th Earl Of Hereford's father? | 16 September 1360 | 16 september 1360 | 1.0 | 1.0 | 1.0 | 1.0 |
+| 7 | who is Helmichis's father-in-law? | Cunimund | Cunimund | 1.0 | 1.0 | 1.0 | 1.0 |
+| 8 | where does the director of film Wine Of Morning work at? | Bob Jones University | bob jones university | 1.0 | 1.0 | 1.0 | 1.0 |
+| 9 | who is the paternal grandmother of Marie Of Brabant, Queen Of France? | Margaret of Flanders | beatrice d'avesnes | 0 | 0 | 0 | 0.0 |
+| 10 | who is Renaud Ii, Count Of Soissons's uncle? | John I, count of soissons | john i, count of soissons | 1.0 | 1.0 | 1.0 | 1.0 |
+| 11 | when did William Le Poer Trench's father die? | 26 April 1872 | 26 april 1872 | 1.0 | 1.0 | 1.0 | 1.0 |
+| 12 | which film came out earlier, Indradhanura Chhai or The Death Of Black King? | The Death Of Black King | The Death Of Black King | 1.0 | 1.0 | 1.0 | 1.0 |
+| 13 | are both villages, Rhosgoch and Qaleh-Ye Sahar, located in the same country? | no | no | 1.0 | 1.0 | 1.0 | 1.0 |
+| 14 | which film has the director who was born first, Hell Up In Harlem or The Soviet Story? | Hell Up In Harlem | Hell Up In Harlem | 1.0 | 1.0 | 1.0 | 1.0 |
+| 15 | who was born first, Cipriano Castro or Damir Nikšić? | Cipriano Castro | Cipriano Castro | 1.0 | 1.0 | 1.0 | 1.0 |
+| 16 | which film has the director who died first, The Year Of The Rabbit or Monster On The Campus? | Monster On The Campus | Monster On The Campus | 1.0 | 1.0 | 1.0 | 1.0 |
+| 17 | who is younger, Guy Arvely Dolsin or Altuğ Çelikbilek? | Altuğ Çelikbilek | Altuğ Çelikbilek | 1.0 | 1.0 | 1.0 | 1.0 |
+| 18 | which song came out first, Joel The Lump Of Coal or Jugband Blues? | Jugband Blues | Jugband Blues | 1.0 | 1.0 | 1.0 | 1.0 |
+| 19 | are both Open Mobile and Primestar located in the same country? | No | no | 1.0 | 1.0 | 1.0 | 1.0 |
+| 20 | who is Archibald Acheson, 4Th Earl Of Gosford's paternal grandfather? | Archibald Acheson, 2nd Earl of Gosford | Archibald Acheson, 2nd Earl of Gosford | 1.0 | 1.0 | 1.0 | 1.0 |
+| 21 | who is the paternal grandfather of Mark Getty? | Jean Paul Getty | J. Paul Getty | 0.6666666666666666 | 0.6666666666666666 | 0.6666666666666666 | 0.6666666666666666 |
+| 22 | where did the performer of song Fantasy (George Michael Song) die? | Goring-on-Thames, Oxfordshire | his home in goring - on - thames, oxfordshire | 0.22222222222222224 | 0.14285714285714285 | 0.5 | 0.7272727272727273 |
+| 23 | which film whose director was born first, The Abduction Club or Wooden Crosses? | Wooden Crosses | Wooden Crosses | 1.0 | 1.0 | 1.0 | 1.0 |
+| 24 | which film came out earlier, Above Rubies or The Magic Aster? | Above Rubies | Above Rubies | 1.0 | 1.0 | 1.0 | 1.0 |
+| 25 | what is the place of birth of the director of film Clowning Around? | Castlemaine, Victoria, Australia | castlemaine, victoria, australia | 1.0 | 1.0 | 1.0 | 1.0 |
+| 26 | where was the place of death of Kamures Kadın's husband? | Istanbul | istanbul | 1.0 | 1.0 | 1.0 | 1.0 |
+| 27 | which film has the director who died first, Tex And The Lord Of The Deep or Henry Goes Arizona? | Henry Goes Arizona | Henry Goes Arizona | 1.0 | 1.0 | 1.0 | 1.0 |
+| 28 | which country the performer of song I Believe In Your Sweet Love is from? | United Kingdom | wales | 0 | 0 | 0 | 0.0 |
+| 29 | who is Marcus Annius Libo's aunt? | Faustina the Elder | faustina the elder | 1.0 | 1.0 | 1.0 | 1.0 |
+| 30 | which film was released more recently, Bajo Otro Sol or Riding The California Trail? | Bajo Otro Sol | Bajo Otro Sol | 1.0 | 1.0 | 1.0 | 1.0 |
+| 31 | when is Henrietta Maria Of Brandenburg-Schwedt's father's birthday? | May 19, 1669 | 19 may 1669 | 1.0 | 1.0 | 1.0 | 0.6666666666666666 |
+| 32 | which film was released more recently, Dance With A Stranger or Miley Naa Miley Hum? | Miley Naa Miley Hum | Miley Naa Miley Hum | 1.0 | 1.0 | 1.0 | 1.0 |
+| 33 | which film was released first, Vacations In Majorca or Dr. Socrates? | Dr. Socrates | Dr. Socrates | 1.0 | 1.0 | 1.0 | 1.0 |
+| 34 | who is younger, Peter Rosegger or Ruel Redinger? | Ruel Redinger | Ruel Redinger | 1.0 | 1.0 | 1.0 | 1.0 |
+| 35 | who is the spouse of the performer of song This Time (Waylon Jennings Song)? | Jessi Colter | Barbara Elizabeth Rood | 0 | 0 | 0 | 0.0 |
+| 36 | are Twin Cairns Island and Nova Zembla Island located in the same country? | yes | yes | 1.0 | 1.0 | 1.0 | 1.0 |
+| 37 | who died first, Erich Haenisch or William Pooley? | William Pooley | William Pooley | 1.0 | 1.0 | 1.0 | 1.0 |
+| 38 | which film has the director who died later, The Great Man'S Lady or La Belle Américaine? | La Belle Américaine | La Belle Américaine | 1.0 | 1.0 | 1.0 | 1.0 |
+| 39 | where was the place of death of Shahnawaz Bhutto's mother? | Iranian hospital Dubai | iranian hospital dubai | 1.0 | 1.0 | 1.0 | 1.0 |
+| 40 | where was the performer of song Égérie (Song) born? | France | San Leandro, California | 0 | 0 | 0 | 0.0 |
+| 41 | who is the father-in-law of Duke William Of Mecklenburg-Schwerin? | Prince Albert of Prussia | Prince Albert of Prussia | 1.0 | 1.0 | 1.0 | 1.0 |
+| 42 | who is Sir William Gore, 3Rd Baronet's paternal grandfather? | Sir Paul Gore, 1st Baronet | sir paul gore, 1st baronet | 1.0 | 1.0 | 1.0 | 1.0 |
+| 43 | which country Nizar Al-Mustafa's father is from? | Egypt | egypt | 1.0 | 1.0 | 1.0 | 1.0 |
+| 44 | which film came out earlier, The Drover'S Sweetheart or Pigsty (Film)? | The Drover'S Sweetheart | The Drover's Sweetheart | 1.0 | 1.0 | 1.0 | 1.0 |
+| 45 | which film came out earlier, Closely Watched Trains or Det Sande Ansigt? | Det Sande Ansigt | Det Sande Ansigt | 1.0 | 1.0 | 1.0 | 1.0 |
+| 46 | are both directors of films La Morte Vivante and Stranger On Horseback from the same country? | yes | yes | 1.0 | 1.0 | 1.0 | 1.0 |
+| 47 | which country Keōpūolani's husband is from? | Hawaii | Hawaii | 1.0 | 1.0 | 1.0 | 1.0 |
+| 48 | which film came out earlier, X-Paroni or Mi Novia Está De Madre? | X-Paroni | X-Paroni | 1.0 | 1.0 | 1.0 | 1.0 |
+| 49 | which film was released earlier, August Underground'S Penance or Vasantha Raagam? | Vasantha Raagam | Vasantha Raagam | 1.0 | 1.0 | 1.0 | 1.0 |
+| 50 | who is the father-in-law of Hong Ra-Hee? | Lee Byung-chul | Hong Jin-ki | 0 | 0 | 0 | 0.0 |
+| 51 | who is Isabella Of Bourbon's paternal grandfather? | John I, Duke of Bourbon | charles i, duke of bourbon | 0.8000000000000002 | 0.8 | 0.8 | 0.8000000000000002 |
+| 52 | what is the date of death of Duleep Singh's father? | 1839 | 27 june 1839 | 0.5 | 0.3333333333333333 | 1.0 | 0.5 |
+| 53 | who is the spouse of the performer of song Et Moi, Et Moi, Et Moi? | francoise hardy | francoise hardy | 1.0 | 1.0 | 1.0 | 1.0 |
+| 54 | who lived longer, Charles Wheatstone or Jean-Claude Lauzon? | Charles Wheatstone | Charles Wheatstone | 1.0 | 1.0 | 1.0 | 1.0 |
+| 55 | where was the place of death of Thomas E. Noell's father? | Washington, D. C. | Washington, D. C. | 1.0 | 1.0 | 1.0 | 1.0 |
+| 56 | who is the paternal grandfather of Diego Fernández De Oviedo? | fernan blazquez de caceres | Fernando Fernández de Ovando, 1st Count of Torrelaguna and  | 0.15384615384615383 | 0.1111111111111111 | 0.25 | 0.14285714285714288 |
+| 57 | which country Dorothea Of Denmark, Duchess Of Mecklenburg's father is from? | Denmark | denmark | 1.0 | 1.0 | 1.0 | 1.0 |
+| 58 | where did Mary Of Woodstock's mother die? | Harby | in the house of Richard de Weston near Harby, Nottinghamshire | 0.19999999999999998 | 0.1111111111111111 | 1.0 | 0.18181818181818182 |
+| 59 | which film was released earlier, Moment Of Danger or The Ballad Of Josie? | Moment Of Danger | Moment Of Danger | 1.0 | 1.0 | 1.0 | 1.0 |
+| 60 | which film has the director who died first, The Piper'S Price or The Blonde From Singapore? | The Piper'S Price | The Blonde From Singapore | 0 | 0 | 0 | 0.25 |
+| 61 | what is the place of birth of the director of film Ninamaninja Kalpadukal? | Methala | methala, near perumbavoor in kerala | 0.33333333333333337 | 0.2 | 1.0 | 0.33333333333333337 |
+| 62 | which film came out earlier, Alkohol or Night Of Dark Shadows? | Alkohol | Alkohol | 1.0 | 1.0 | 1.0 | 1.0 |
+| 63 | which film whose director is younger, Many Tanks Mr. Atkins or Do Musafir? | Do Musafir | Do Musafir | 1.0 | 1.0 | 1.0 | 1.0 |
+| 64 | which film came out first, F The Prom or The Comedians Of Comedy? | The Comedians Of Comedy | The Comedians Of Comedy | 1.0 | 1.0 | 1.0 | 1.0 |
+| 65 | which film has the director who was born first, Tombstone Rashomon or Waiting For The Clouds? | Waiting For The Clouds | Tombstone Rashomon | 0 | 0 | 0 | 0.0 |
+| 66 | which film has the director who was born first, Perdón, Viejita or Smokey And The Bandit? | Perdón, Viejita | Perdón, Viejita | 1.0 | 1.0 | 1.0 | 1.0 |
+| 67 | where did the director of film American Gothic (2007 Film) graduate from? | University of Wisconsin-Madison | the University of Wisconsin-Madison | 1.0 | 1.0 | 1.0 | 0.888888888888889 |
+| 68 | which magazine was established first, Women'S Suffrage Journal or Mostar (Magazine)? | Women'S Suffrage Journal | Women's Suffrage Journal | 1.0 | 1.0 | 1.0 | 1.0 |
+| 69 | which film has the director who died earlier, Mayor Muthanna or The Market Of Souls? | The Market Of Souls | The Market Of Souls | 1.0 | 1.0 | 1.0 | 1.0 |
+| 70 | do both films, The Glass Castle (1950 Film) and The Ferret (Film), have the directors who are from the same country? | yes | yes | 1.0 | 1.0 | 1.0 | 1.0 |
+| 71 | which film has the director who was born later, The Man Is Armed or Wolf Warrior? | Wolf Warrior | Wolf Warrior | 1.0 | 1.0 | 1.0 | 1.0 |
+| 72 | where was the performer of song Feelin' Myself (Nipsey Hussle Song) born? | Crenshaw | the crenshaw district of south central los angeles | 0.25 | 0.14285714285714285 | 1.0 | 0.2222222222222222 |
+| 73 | which film whose director is younger, Winter Sleepers or Poveri Milionari? | Winter Sleepers | Winter Sleepers | 1.0 | 1.0 | 1.0 | 1.0 |
+| 74 | who is the paternal grandfather of Bruno Ii Von Berg? | Adolf II of Berg-Hovel | Adolf III, Count of Berg | 0.4444444444444445 | 0.4 | 0.5 | 0.6 |
+| 75 | are The Other Half (2016 Film) and Spy Kids 2: The Island Of Lost Dreams from the same country? | no | no | 1.0 | 1.0 | 1.0 | 1.0 |
+| 76 | which film came out first, Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato or The Bag Man? | Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato | Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi | 0.923076923076923 | 1.0 | 0.8571428571428571 | 0.923076923076923 |
+| 77 | who is the paternal grandfather of Dibyasambandh? | Mongkut | bhanurangsi savangwongse | 0 | 0 | 0 | 0.0 |
+| 78 | who is Charles Willoughby, 10Th Baron Willoughby Of Parham's paternal grandmother? | Lady Frances Manners | anne carey | 0 | 0 | 0 | 0.0 |
+| 79 | what is the place of birth of Sextus Barbour's father? | orange county, virginia | orange county, virginia | 1.0 | 1.0 | 1.0 | 1.0 |
+| 80 | what is the place of birth of the performer of song Ruleta (Inna Song)? | Mangalia, Romania | mangalia, romania | 1.0 | 1.0 | 1.0 | 1.0 |
+| 81 | who is Henri Ii, Duke Of Nemours's paternal grandfather? | jacques de savoie | henri de savoie, 4th duc de nemours | 0.4 | 0.2857142857142857 | 0.6666666666666666 | 0.4 |
+| 82 | who is Gisela Of Hungary's father-in-law? | Géza, Grand Prince of the Hungarians | geza | 0 | 0 | 0 | 0.0 |
+| 83 | who is the paternal grandmother of King Kang Of Zhou? | Queen Yi Jiang | queen yi jiang | 1.0 | 1.0 | 1.0 | 1.0 |
+| 84 | who is the spouse of the director of film Rodney Steps In? | Ivy Duke and Dorothy Batley | dorothy batley | 0.5714285714285715 | 1.0 | 0.4 | 0.5714285714285715 |
+| 85 | when did Frances Vane, Marchioness Of Londonderry's father die? | 1 August 1813 | 1 august 1813 | 1.0 | 1.0 | 1.0 | 1.0 |
+| 86 | were Jake Eisenhart and Michael T. Ullman of the same nationality? | yes | yes | 1.0 | 1.0 | 1.0 | 1.0 |
+| 87 | who was born first, Antoine Casavant or Abdul Ali Lalu? | Antoine Casavant | Antoine Casavant | 1.0 | 1.0 | 1.0 | 1.0 |
+| 88 | where did Rameshwari Nehru's husband graduate from? | Oxford University | oxford university | 1.0 | 1.0 | 1.0 | 1.0 |
+| 89 | who is the paternal grandfather of Sir John Hamilton-Dalrymple, 5Th Baronet? | Sir Hew Dalrymple, 2nd Baronet | Sir Hew Dalrymple, 2nd Baronet | 1.0 | 1.0 | 1.0 | 1.0 |
+| 90 | where did Catherine Of Taranto, Countess Of Copertino's mother die? | Lecce | lecce | 1.0 | 1.0 | 1.0 | 1.0 |
+| 91 | which award the director of film Lady Magdalene'S got? | Best Cutting Edge Film | special jury prize for libertarian ideals | 0 | 0 | 0 | 0.0 |
+| 92 | what nationality is Princess Charlotte Of Saxe-Meiningen's husband? | German | german | 1.0 | 1.0 | 1.0 | 1.0 |
+| 93 | what is the place of birth of Aleksey Greig's father? | Inverkeithing | Inverkeithing, Fife, Scotland | 0.5 | 0.3333333333333333 | 1.0 | 0.5 |
+| 94 | when did Thomas Of Galloway (Bastard)'s father die? | 1234 | 1234 | 1.0 | 1.0 | 1.0 | 1.0 |
+| 95 | when did Robert Bertie, 3Rd Earl Of Lindsey's father die? | 1666 | 1666 | 1.0 | 1.0 | 1.0 | 1.0 |
+| 96 | does Leslie Pietrzyk have the same nationality as Marianne Wiggins? | yes | yes | 1.0 | 1.0 | 1.0 | 1.0 |
+| 97 | are both Howard Lake (British Columbia) and North Buck Lake (Alberta) located in the same country? | yes | yes | 1.0 | 1.0 | 1.0 | 1.0 |
+| 98 | where was the place of death of the composer of song Gretchen Am Spinnrade? | Vienna | vienna | 1.0 | 1.0 | 1.0 | 1.0 |
+| 99 | who was born later, Hugh Evelyn Wortham or Johnny Ekström? | Johnny Ekström | Johnny Ekström | 1.0 | 1.0 | 1.0 | 1.0 |
+| 100 | are both mountains, Yana Urqu (Q'Umirqucha) and Puka Rumi, located in the same country? | yes | yes | 1.0 | 1.0 | 1.0 | 1.0 |
+| 101 | what nationality is Elizabeth Of Rhuddlan's father? | English | English | 1.0 | 1.0 | 1.0 | 1.0 |
+| 102 | who is Maurice De Berkeley, 4Th Baron Berkeley's maternal grandfather? | Roger Mortimer, 1st Earl of March | thomas de berkeley, 3rd baron berkeley | 0 | 0 | 0 | 0.0 |
+|  |  |  |  | 0.7898700972230384 | 0.7845782757547464 | 0.828828197945845 | 0.7956326897503367 |

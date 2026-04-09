@@ -39,5 +39,6 @@ The evaluator currently defaults to:
 - Use [Getting Started](getting-started.md) for installation, environment variables, and the first run
 - Use [Evaluation Pipeline](evaluation.md) for CLI flags and runtime behavior
 - Use [Datasets](datasets.md) for the corrected dataset workflow
+- Use [CacheBlend Issue Notes](cacheblend-issue.md) for the dataset-quality issue, correction policy, and benchmark impact
 - Use [Results](results.md) to understand CSV outputs and directory conventions
 - Use [Smoke Tests](smoke-tests.md) to validate endpoint connectivity before a full run
