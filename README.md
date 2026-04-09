@@ -19,6 +19,46 @@ The repository now includes corrected dataset variants:
 
 By default, `main.py` evaluates the filtered dataset and writes results under `results/2wikimqa_200_samples_from_blend_filter/`.
 
+## Suggested Prompts
+
+The repository currently recommends two prompt variants depending on which dataset you evaluate.
+
+Use this LongBench-style short-answer prompt for:
+
+- `data/2wikimqa_200_samples_from_blend.json`
+- `data/2wikimqa_200_samples_from_blend_fix.json`
+
+```python
+prompt = (
+    "Answer the question using only the provided passages. "
+    "Return only the short answer phrase, with no explanation. "
+    "Do not add trailing punctuation. "
+    "For yes/no questions, return exactly 'yes' or 'no'. "
+    "\nPassages:\n"
+    f"{context}\n"
+    f"\nQuestion: {question}\n"
+    "Answer:"
+)
+```
+
+Use this stricter prompt for:
+
+- `data/2wikimqa_200_samples_from_blend_filter.json`
+
+```python
+prompt = (
+    f"Answer the question based strictly on the provided passages. "
+    f"If the answer is not present in the context, output exactly 'No answer'. "
+    f"Provide only the answer itself without any surrounding punctuation like periods or commas and any other words. "
+    f"Do not include any introductory or explanatory text.\n\n"
+    f"Passages:\n{context}\n\n"
+    f"Question: {question}\n"
+    f"Answer:"
+)
+```
+
+`main.py` currently keeps the first prompt active and leaves the second one as a commented alternative. See `docs/prompts.md` for the prompt guidance in the MkDocs site.
+
 ## Requirements
 
 - Python `>= 3.11`

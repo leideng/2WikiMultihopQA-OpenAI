@@ -294,7 +294,9 @@ async def main():
 
             print(f"Context: {len(ctxs)} chunks with total {len(context)} characters")
 
-            #we use longbench's prompt template for 2WikiMQA
+            # Suggested prompt for the original and fixed 200-row datasets.
+            # This follows the LongBench-style short-answer format and does
+            # not force a "No answer" output when the context is insufficient.
             prompt = (
                 "Answer the question using only the provided passages. "
                 "Return only the short answer phrase, with no explanation. "
@@ -307,7 +309,9 @@ async def main():
             )
             print(f"Prompt(short): {prompt[:500]}\n......\n{prompt[-500:]}")
 
-            # Refined prompt template
+            # Suggested prompt for the filtered dataset if you want the model
+            # to answer strictly from the provided passages and emit
+            # "No answer" when support is missing.
             # prompt = (
             #     f"Answer the question based strictly on the provided passages. "
             #     f"If the answer is not present in the context, output exactly 'No answer'. "
@@ -318,7 +322,6 @@ async def main():
             #     f"Answer:"
             # )
 
-            # Printing for verification
             print(f"Prompt(short): {prompt[:500]}\n......\n{prompt[-500:]}")
 
             prompts.append(prompt)

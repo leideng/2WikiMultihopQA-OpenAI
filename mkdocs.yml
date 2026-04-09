@@ -24,6 +24,7 @@ nav:
   - Home: index.md
   - Getting Started: getting-started.md
   - Evaluation Pipeline: evaluation.md
+  - Suggested Prompts: prompts.md
   - Datasets: datasets.md
   - CacheBlend Issue Notes: cacheblend-issue.md
   - Results: results.md

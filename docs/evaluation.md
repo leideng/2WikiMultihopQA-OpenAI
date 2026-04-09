@@ -26,6 +26,13 @@ For yes/no questions, return exactly 'yes' or 'no'.
 
 This keeps outputs short and aligned with extractive QA-style scoring.
 
+The repository now documents two recommended prompt variants:
+
+- the LongBench-style short-answer prompt for the original and fixed 200-row datasets
+- the stricter `No answer` prompt for the filtered dataset
+
+See [Suggested Prompts](prompts.md) for the full templates and the recommended mapping.
+
 ## Main CLI Flags
 
 | Flag | Meaning | Default |
