@@ -1,1 +1,29 @@
-site_name: My Docs
+site_name: 2WikiMultihopQA-OpenAI
+site_description: Documentation for evaluating OpenAI-compatible chat models on a 2WikiMultihopQA benchmark slice.
+repo_name: 2WikiMultihopQA-OpenAI
+repo_url: https://github.com/leideng/2WikiMultihopQA-OpenAI
+docs_dir: docs
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Evaluation Pipeline: evaluation.md
+  - Datasets: datasets.md
+  - Results: results.md
+  - Smoke Tests: smoke-tests.md
